@@ -37,9 +37,7 @@ done
 # Source global functions and variables
 . "${CWD}/vars.sh"
 . "${CWD}/functions.sh"
-set -x
 getLocalSecrets
-set +x
 getEnv
 getNamespace
 

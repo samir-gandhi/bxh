@@ -8,6 +8,7 @@ NC='\033[0m'
 
 ## Determine if this script is being run locally or from a pipeline:
 getLocalSecrets() {
+set -x
 if test -z "${GITHUB_REPOSITORY}"; then
   set -a
   GITHUB_REPOSITORY=$(git remote get-url origin)
@@ -17,6 +18,7 @@ if test -z "${GITHUB_REPOSITORY}"; then
   test -f "scripts/local-secrets.sh" && . "scripts/local-secrets.sh" 
   set +a
 fi
+set +x
 }
 
 ## Determine environment based on trigger
@@ -31,7 +33,7 @@ getEnv() {
   SERVER_PROFILE_BRANCH="$(echo "${GITHUB_REF}" | sed -e "s#refs/heads/##g")"
   echo "${YELLOW}INFO: Environment is: ${ENV}${NC}"
   export ENV SERVER_PROFILE_BRANCH
-  
+
 }
 
 getNamespace() {
