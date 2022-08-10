@@ -13,28 +13,28 @@ ping-devops:
     ingress:
       enabled: true
     envs:
-      SERVER_PROFILE_ADMIN_BRANCH: "${GITHUB_REF}"
-      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+      SERVER_PROFILE_ADMIN_BRANCH: "${SERVER_PROFILE_BRANCH}"
+      SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
 
   pingaccess-engine:
     envs:
-      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+      SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
 
 
   pingfederate-admin:
     ingress:
       enabled: true
     envs:
-      SERVER_PROFILE_ADMIN_BRANCH: "${GITHUB_REF}"
-      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+      SERVER_PROFILE_ADMIN_BRANCH: "${SERVER_PROFILE_BRANCH}"
+      SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
 
   pingfederate-engine:
     envs:
-      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+      SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
 
   pingdirectory:
     envs:
-      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+      SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
 
   pingdataconsole:
     ingress:
@@ -43,11 +43,11 @@ ping-devops:
     envs:
       SERVER_PROFILE_PATH: profiles/pingdataconsole
       PDC_PROFILE_SHA: "${PINGDATACONSOLE_SHA}"
-      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+      SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
 
   pingauthorize:
     ingress:
       enabled: true
     enabled: true
     envs:
-      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+      SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
