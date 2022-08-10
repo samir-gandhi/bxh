@@ -15,14 +15,14 @@ bxhealthapp:
 ping-devops:
   global:
     # TODO: find somewhere to show tag
-    ingress:
-      enabled: false
-      addReleaseNameToHost: prepend
-      defaultDomain: "ping-devops.com"
-      defaultTlsSecret:
-      annotations:
-        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        kubernetes.io/ingress.class: "nginx-public"
+    # ingress:
+    #   enabled: false
+    #   addReleaseNameToHost: prepend
+    #   defaultDomain: "ping-devops.com"
+    #   defaultTlsSecret:
+    #   annotations:
+    #     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    #     kubernetes.io/ingress.class: "nginx-public"
     # Environment variables that should exist in every product are listed in global.envs
     envs:
       ## CHANGEME - hardcode this line
