@@ -19,8 +19,7 @@ ping-devops:
   pingaccess-engine:
     envs:
       SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
-
-
+      
   pingfederate-admin:
     ingress:
       enabled: true

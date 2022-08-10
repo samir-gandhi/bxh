@@ -27,7 +27,6 @@ ping-devops:
     envs:
       ## CHANGEME - hardcode this line
       SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
-      ## CHANGEME - hardcode this line
       SERVER_PROFILE_ADMIN_URL: "https://github.com/${GITHUB_REPOSITORY}"
       REACT_APP_HOST: "${FQDN}"
       REACT_APP_ENV: "${REACT_APP_ENV_NAME}"
@@ -57,6 +56,8 @@ ping-devops:
       generate: true
     enabled: true
     envs:
+      SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
+      SERVER_PROFILE_ADMIN_URL: "https://github.com/${GITHUB_REPOSITORY}"
       # PingAccess Admin Console will receive the admin and engine profile.
       SERVER_PROFILE_ADMIN_PATH: profiles/pingaccess-admin
       # On the default values.yaml we use the repository default branch
@@ -77,6 +78,7 @@ ping-devops:
         strategy:
           type: Recreate
     envs:
+      SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
       SERVER_PROFILE_PATH: profiles/pingaccess-engine
       PA_ENGINE_PROFILE_SHA: "${PINGACCESS_ENGINE_SHA}"
 
@@ -85,6 +87,8 @@ ping-devops:
     image:
       tag: 2201-11.0.1
     envs:
+      SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
+      SERVER_PROFILE_ADMIN_URL: "https://github.com/${GITHUB_REPOSITORY}"
       SERVER_PROFILE_ADMIN_PATH: profiles/pingfederate-admin
       SERVER_PROFILE_PARENT: ADMIN
       SERVER_PROFILE_PATH: profiles/pingfederate-engine
@@ -102,6 +106,7 @@ ping-devops:
         strategy:
           type: Recreate
     envs:
+      SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
       SERVER_PROFILE_PATH: profiles/pingfederate-engine
       PF_ENGINE_PROFILE_SHA: "${PINGFEDERATE_ENGINE_SHA}"
     container:
@@ -116,6 +121,7 @@ ping-devops:
   pingdirectory:
     enabled: true
     envs:
+      SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
       SERVER_PROFILE_PATH: profiles/pingdirectory
       PD_PROFILE_SHA: "${PINGDIRECTORY_SHA}"
     container:
@@ -154,6 +160,7 @@ ping-devops:
   pingauthorize:
     enabled: true
     envs:
+      SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
       SERVER_PROFILE_PATH: profiles/pingauthorize
       PAZ_PROFILE_SHA: "${PINGAUTHORIZE_SHA}"
     container:
@@ -181,15 +188,16 @@ ping-devops:
         clusterService: true
       clusterServiceName: pingauthorize-cluster
       
-    pingauthorizepap:
-      enabled: true
-      image:
-        tag: 2201-9.0.0.0
-      envs:
-        SERVER_PROFILE_PATH: profiles/pingauthorizepap
-        PAZPAP_PROFILE_SHA: "${PINGAUTHORIZEPAP_SHA}"
-      workload:
-        type: Deployment
-        deployment:
-          strategy:
-            type: Recreate
+  pingauthorizepap:
+    enabled: true
+    image:
+      tag: 2201-9.0.0.0
+    envs:
+      SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
+      SERVER_PROFILE_PATH: profiles/pingauthorizepap
+      PAZPAP_PROFILE_SHA: "${PINGAUTHORIZEPAP_SHA}"
+    workload:
+      type: Deployment
+      deployment:
+        strategy:
+          type: Recreate
