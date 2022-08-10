@@ -1,9 +1,9 @@
-ldap.url=ldap://${PD_ENGINE_PRIVATE_HOSTNAME}:${LDAP_PORT}
+ldap.url=ldap://${PD_ENGINE_PRIVATE_HOSTNAME}:${PD_ENGINE_PRIVATE_PORT_LDAP}
 ldap.username=cn=pingfederate
-ldap.password=${PING_IDENTITY_PASSWORD}
+ldap.password=${PF_USER_PWD}
 ldap.connectTimeout=10000
-ldap.readTimeout=3000
-search.base=ou=people,${USER_BASE_DN}
+ldap.readTimeout=${PA_ENGINE_PRIVATE_PORT_HTTPS}
+search.base=${USER_BASE_DN}
 search.filter=(uid={0})
 role.admin=
 role.cryptoManager=
@@ -18,4 +18,4 @@ role.map.admin=cn=PFAdminGroup,ou=groups,${USER_BASE_DN}
 role.map.cryptoManager=cn=PFCryptoGroup,ou=groups,${USER_BASE_DN}
 role.map.auditor=cn=PFAuditorGroup,ou=groups,${USER_BASE_DN}
 role.map.userAdmin=cn=PFUserAdminGroup,ou=groups,${USER_BASE_DN}
-role.map.expressionAdmin=cn=PFExpressionAdminGroup,ou=groups,${USER_BASE_DN}
+role.map.expressionAdmin=cn=PFAdminGroup,ou=groups,${USER_BASE_DN}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:config xmlns:con="http://www.sourceid.org/2004/05/config">
+    <con:item name="lastUpdated">1635204778724</con:item>
+    <con:map name="scope-descriptions">
+        <con:item name="address">Used to access your postal address</con:item>
+        <con:item name="phone">Used to access your phone number</con:item>
+        <con:item name="openid">Used to authenticated with OIDC</con:item>
+        <con:item name="profile">Used to access your profile</con:item>
+        <con:item name="email">Used to access your email address</con:item>
+    </con:map>
+    <con:list name="dynamic-common-scopes"/>
+    <con:map name="scope-group-descriptions"/>
+    <con:map name="scope-group-mappings"/>
+    <con:map name="exclusive-scope-descriptions">
+        <con:item name="urn:${GIT_PATH}:caregiver:test-results">View Test Results</con:item>
+        <con:item name="urn:${GIT_PATH}:patient:profile-management">Patient Profile - Update Profile</con:item>
+        <con:item name="urn:${GIT_PATH}:patient:caregiver-access">Caregiver Patient Record Consent</con:item>
+        <con:item name="urn:${GIT_PATH}:caregiver:patients">Patients the Caregiver can access</con:item>
+        <con:item name="urn:${GIT_PATH}:caregiver:dashboard">Caregiver Dashboard</con:item>
+        <con:item name="urn:${GIT_PATH}:patient:profile-settings">Patient Profile</con:item>
+        <con:item name="urn:${GIT_PATH}:caregiver:message-doctor">Message Doctor</con:item>
+        <con:item name="urn:${GIT_PATH}:patient:dashboard">Patient Dashboard</con:item>
+        <con:item name="urn:pingidentity:consent-unpriv">Used to perform Unprivileged ConsentAPI calls</con:item>
+        <con:item name="urn:pingidentity:consent-priv">Used to perform Privileged ConsentAPI calls</con:item>
+        <con:item name="urn:${GIT_PATH}:patient:signin-password">Patient Profile - Update Password</con:item>
+        <con:item name="urn:pingidentity:directory">Used to perform DirectoryAPI calls</con:item>
+        <con:item name="urn:${GIT_PATH}:caregiver:appointments">Appointment Schedule</con:item>
+    </con:map>
+    <con:list name="dynamic-exclusive-scopes"/>
+    <con:map name="exclusive-scope-group-descriptions">
+        <con:item name="patient-scopes">Patient UserType Scopes</con:item>
+        <con:item name="caregiver-scopes">Caregiver UserType Scopes</con:item>
+    </con:map>
+    <con:map name="exclusive-scope-group-mappings">
+        <con:item name="patient-scopes:2">urn:${GIT_PATH}:patient:dashboard</con:item>
+        <con:item name="caregiver-scopes:1">urn:${GIT_PATH}:caregiver:test-results</con:item>
+        <con:item name="patient-scopes:1">urn:${GIT_PATH}:patient:profile-management</con:item>
+        <con:item name="caregiver-scopes:5">urn:${GIT_PATH}:caregiver:dashboard</con:item>
+        <con:item name="caregiver-scopes:4">urn:${GIT_PATH}:caregiver:patients</con:item>
+        <con:item name="caregiver-scopes:3">urn:pingidentity:consent-unpriv</con:item>
+        <con:item name="caregiver-scopes:2">urn:${GIT_PATH}:caregiver:message-doctor</con:item>
+        <con:item name="caregiver-scopes:6">urn:${GIT_PATH}:caregiver:appointments</con:item>
+        <con:item name="patient-scopes:6">urn:${GIT_PATH}:patient:profile-settings</con:item>
+        <con:item name="patient-scopes:5">urn:${GIT_PATH}:patient:signin-password</con:item>
+        <con:item name="patient-scopes:4">urn:${GIT_PATH}:patient:caregiver-access</con:item>
+        <con:item name="patient-scopes:3">urn:pingidentity:consent-unpriv</con:item>
+    </con:map>
+    <con:item name="default-scope-description"/>
+</con:config>

@@ -1,33 +1,53 @@
 # This file only contains values that should be different in a dev environment
+ping-devops:
+  global:
+    ingress:
+      addReleaseNameToHost: append
+      defaultDomain: ping-devops.com
+      defaultTlsSecret:
+      annotations:
+        # nginx example
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        kubernetes.io/ingress.class: "nginx-public"
+  pingaccess-admin:
+    ingress:
+      enabled: true
+    envs:
+      SERVER_PROFILE_ADMIN_BRANCH: "${GITHUB_REF}"
+      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
 
-pingaccess-admin:
-  envs:
-    SERVER_PROFILE_ADMIN_BRANCH: "${GITHUB_REF}"
-    SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
-
-pingaccess-engine:
-  envs:
-    SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+  pingaccess-engine:
+    envs:
+      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
 
 
-pingfederate-admin:
-  envs:
-    SERVER_PROFILE_ADMIN_BRANCH: "${GITHUB_REF}"
-    SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+  pingfederate-admin:
+    ingress:
+      enabled: true
+    envs:
+      SERVER_PROFILE_ADMIN_BRANCH: "${GITHUB_REF}"
+      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
 
-pingfederate-engine:
-  envs:
-    SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+  pingfederate-engine:
+    envs:
+      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
 
-pingdirectory:
-  envs:
-    SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+  pingdirectory:
+    envs:
+      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
 
-pingdataconsole:
-  envs:
-    SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+  pingdataconsole:
+    ingress:
+      enabled: true
+    enabled: true
+    envs:
+      SERVER_PROFILE_PATH: profiles/pingdataconsole
+      PDC_PROFILE_SHA: "${PINGDATACONSOLE_SHA}"
+      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
 
-pingauthorize:
-  enabled: true
-  envs:
-    SERVER_PROFILE_BRANCH: "${GITHUB_REF}"
+  pingauthorize:
+    ingress:
+      enabled: true
+    enabled: true
+    envs:
+      SERVER_PROFILE_BRANCH: "${GITHUB_REF}"

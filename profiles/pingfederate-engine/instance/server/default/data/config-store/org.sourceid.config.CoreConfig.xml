@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.sourceid.org/2004/05/config">
+    <!--Dsig keystore information: name and password-->
+    <item name="DsigKeystoreName">ping-dsig.jks</item>
+    <item name="DsigKeystorePassword">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4wLjIuMiJ9..qNJjS9CjstT0PSaGiar5pw.IfOikny4t0HWXXbAcIH3eDKJ6Z3zaDjFoXwF2bA4DpE.T7frhv1WPQ_stVxFpg9R_w</item>
+    <!--Do not modify-->
+    <item name="DsigKeystoreType2">default</item>
+    <!--Map of Dsig keystore aliases to passwords; the system uses this map
+     to open private keys for generating signatures, X509
+     authentication, etc. For each item, the name of the item maps
+     to the alias of a private key, and the value of the item is the
+     password to that particular key.-->
+    <map name="DsigPrivateKeyPasswords">
+        <item name="signing-cert">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4wLjIuMiJ9..yeIyRWQgPU2JNnkCAvnpVA.romt22iaj7xfzqUky9BsSG_Ufbc-t9zxejcxffeuCU8.nOvTxLymHvNyoQ_iMGgR8Q</item>
+    </map>
+    <!--DSIG HSM Keystore information: name and password-->
+    <item name="DsigHSMKeystoreName">ping-dsig.hsmks</item>
+    <item name="DsigHSMKeystorePassword"/>
+    <item name="DsigHSMKeystoreType2">default</item>
+    <!--Map of Dsig keystore aliases to passwords; the system uses this map
+     to open private keys for generating signatures, X509
+     authentication, etc. For each item, the name of the item maps
+     to the alias of a private key and the value of the item is the
+     password to that particular key-->
+    <map name="DsigHSMPrivateKeyPasswords"/>
+    <!--SSL Keystore information: name and password-->
+    <item name="SslKeystoreName">ping-ssl.jks</item>
+    <item name="SslKeystorePassword">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4wLjIuMiJ9..TkZPpJ4bjjksPrrw_NZ8lA.UeP8f7r4zH_Sk-34bHhOUUVyDb2RDpFT3_gcmOBTIME.Ortfej81C3L0DwGn4zlvXg</item>
+    <!--Do not modify-->
+    <item name="SslKeystoreType2">default</item>
+    <!--Map of SSL client auth keystore aliases to passwords; the system uses this map
+     to open private keys for generating signatures, X509
+     authentication, etc. For each item, the name of the item maps
+     to the alias of a private key and the value of the item is the
+     password to that particular key-->
+    <map name="SslPrivateKeyPasswords"/>
+    <!--SSL HSM Keystore information: name and password-->
+    <item name="SslHSMKeystoreName">ping-ssl.hsmks</item>
+    <item name="SslHSMKeystorePassword"/>
+    <!--Do not modify-->
+    <item name="SslHSMKeystoreType2">default</item>
+    <!--Map of SSL client auth keystore aliases to passwords; the system uses this map
+     to open private keys for generating signatures, X509
+     authentication, etc. For each item, the name of the item maps
+     to the alias of a private key and the value of the item is the
+     password to that particular key-->
+    <map name="SslHSMPrivateKeyPasswords"/>
+    <!--SSL Server Keystore information: name and password-->
+    <item name="SslServerKeystoreName">ping-ssl-server.jks</item>
+    <item name="SslServerKeystorePassword">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4wLjIuMiJ9..nUrT71t5CV57Pg55vtmvDw.WsHBZsBmofXIgtIDJI9CeRnEMDrJp-WHSJ3-vuTgXrg.JrYqc4uL07-SC2sB33ogZA</item>
+    <!--Do not modify-->
+    <item name="SslServerKeystoreType2">default</item>
+    <!--Map of SSL Server keystore aliases to passwords; the system uses this map
+         to open private keys for generating signatures, X509
+         authentication, etc. For each item, the name of the item maps
+         to the alias of a private key and the value of the item is the
+         password to that particular key-->
+    <map name="SslServerPrivateKeyPasswords">
+        <item name="bszf65h0bn8up02n5ppm3yl5b">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4wLjIuMiJ9..nbkl4V3GqThKAjytFE2AhA.jiVkD_Z3XaLg2aowj8eb6goR1YWdsJUex6mcj5UdRrs.Vt1HlSy_JG4sGvqFhwaS5w</item>
+        <item name="1yxoa70u276rawjl5y4imxkk8">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4wLjIuMiJ9..ES6g8MhUSnCNEswENSVaJA.fkXymyzlR_46PLx4k1jxNSP_dW3X50RDDeJgPBfeTCc.6udnsuHI0Jnzjp_ojH_zTA</item>
+        <item name="6c7z5xzf1nm3kodqpqgqszdvc">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4wLjIuMiJ9..MTc6A_jbHYQyoJfEBOUxDw.H5D7VQQhdMMzTjQhCbaP2ZCCrXEm6_amP3_go-2Oa7k.DtKWNrelWZ3b0CCLIJaYuQ</item>
+    </map>
+    <!--SSL HSM Server Keystore information: name and password-->
+    <item name="SslServerHSMKeystoreName">ping-ssl-server.hsmks</item>
+    <item name="SslServerHSMKeystorePassword"/>
+    <!--Do not modify-->
+    <item name="SslServerHSMKeystoreType2">default</item>
+    <!--Map of SSL Server keystore aliases to passwords; the system uses this map
+         to open private keys for generating signatures, X509
+         authentication, etc. For each item, the name of the item maps
+         to the alias of a private key and the value of the item is the
+         password to that particular key-->
+    <map name="SslServerHSMPrivateKeyPasswords"/>
+    <!--Truststore Keystore information: name and password-->
+    <item name="TrustKeystoreName">ping-trust.jks</item>
+    <item name="TrustKeystorePassword">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4wLjIuMiJ9..t22UjMJJg1zuAxWU0A5PkA.4wnhhdsOTR-RKYGOifdlZxsyBgMpYBi3mKIJkyh7fFQ.bJWjVXwvJUU7S2WYH3OTxg</item>
+    <!--You can specify a key store type here. Available keystore types are
+          JKS     - Java Keystore
+          nCipher.sworld - nCipher keystore
+          default - let the system select a keystore type for you. For Luna HSM 6, JKS is used.
+                    For nCipher, nCipher.sworld is used. Otherwise, JKS is used-->
+    <item name="TrustKeystoreType2">default</item>
+    <!--Truststore HSM Keystore information: name and password-->
+    <item name="TrustHSMKeystoreName">ping-trust.hsmks</item>
+    <item name="TrustHSMKeystorePassword"/>
+    <!--You can specify a key store type here. Available keystore types are
+          JKS     - Java Keystore
+          nCipher.sworld - nCipher keystore
+          default - let the system select a keystore type for you. For Luna HSM 6, JKS is used.
+                    For nCipher, nCipher.sworld is used. Otherwise, JKS is used-->
+    <item name="TrustHSMKeystoreType2">default</item>
+    <!--General keystore information: name and password-->
+    <item name="GeneralKeystoreName">ping-general.jks</item>
+    <item name="GeneralKeystorePassword"/>
+    <!--Do not modify-->
+    <item name="GeneralKeystoreType2">default</item>
+    <!--Map of General keystore aliases to passwords; the system uses this map
+     to open private keys for generating signatures, X509
+     authentication, etc. For each item, the name of the item maps
+     to the alias of a private key, and the value of the item is the
+     password to that particular key.-->
+    <map name="GeneralPrivateKeyPasswords"/>
+    <!--General HSM keystore information: name and password-->
+    <item name="GeneralHSMKeystoreName">ping-general.hsmks</item>
+    <item name="GeneralHSMKeystorePassword"/>
+    <!--Do not modify-->
+    <item name="GeneralHSMKeystoreType2">default</item>
+    <!--Map of General keystore aliases to passwords; the system uses this map
+     to open private keys for generating signatures, X509
+     authentication, etc. For each item, the name of the item maps
+     to the alias of a private key, and the value of the item is the
+     password to that particular key.-->
+    <map name="GeneralHSMPrivateKeyPasswords"/>
+</config>

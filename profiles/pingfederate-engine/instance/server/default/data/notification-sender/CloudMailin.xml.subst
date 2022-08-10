@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:PluginConfiguration isInheritExtendedContractAttributes="false" name="CloudMailin" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields>
+        <urn:Field name="From Address">no-reply@${GIT_PATH}.org</urn:Field>
+        <urn:Field name="Email Server">smtp.cloudmta.net</urn:Field>
+        <urn:Field name="SMTP Port">25</urn:Field>
+        <urn:Field name="Encryption Method">TLS</urn:Field>
+        <urn:Field name="SMTPS Port">587</urn:Field>
+        <urn:Field name="Verify Hostname">true</urn:Field>
+        <urn:Field name="UTF-8 Message Header Support">false</urn:Field>
+        <urn:Field name="Username">eedf948c506dea73</urn:Field>
+        <urn:Field name="Password">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4zLjIuMCJ9..xJ7yPZ2nwQyt5Lb-LmSqhg.2Q1-JHv0hAezcgGxBt8fThva5oMaXOe-fHpNqc_RtL8.Y6vM54Tni0VzBa91Al_TuA</urn:Field>
+        <urn:Field name="Test Address">test@test.com</urn:Field>
+        <urn:Field name="Connection Timeout">30</urn:Field>
+        <urn:Field name="Retry Attempt">2</urn:Field>
+        <urn:Field name="Retry Delay">2</urn:Field>
+        <urn:Field name="Enable SMTP Debugging Messages">false</urn:Field>
+    </urn:Fields>
+    <urn:AdvancedFields>
+        <urn:Field name="Connection Timeout">30</urn:Field>
+        <urn:Field name="Retry Attempt">2</urn:Field>
+        <urn:Field name="Retry Delay">2</urn:Field>
+        <urn:Field name="Enable SMTP Debugging Messages">false</urn:Field>
+    </urn:AdvancedFields>
+    <urn:Tables/>
+</urn:PluginConfiguration>

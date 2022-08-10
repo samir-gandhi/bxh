@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:PluginConfiguration isInheritExtendedContractAttributes="false" name="MailTrap" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields>
+        <urn:Field name="From Address">no-reply@${GIT_PATH}.org</urn:Field>
+        <urn:Field name="Email Server">smtp.mailtrap.io</urn:Field>
+        <urn:Field name="SMTP Port">25</urn:Field>
+        <urn:Field name="Encryption Method">NONE</urn:Field>
+        <urn:Field name="SMTPS Port">465</urn:Field>
+        <urn:Field name="Verify Hostname">true</urn:Field>
+        <urn:Field name="UTF-8 Message Header Support">false</urn:Field>
+        <urn:Field name="Username">572ee1077900a7</urn:Field>
+        <urn:Field name="Password">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4zLjIuMCJ9..XxqTo5lwJQixnBguTlIqXg.PDNlENtaNlyJzl9RCfBFWw.N6NqfvadObTc5vZzyWVqlw</urn:Field>
+        <urn:Field name="Test Address">test@test.com</urn:Field>
+        <urn:Field name="Connection Timeout">30</urn:Field>
+        <urn:Field name="Retry Attempt">2</urn:Field>
+        <urn:Field name="Retry Delay">2</urn:Field>
+        <urn:Field name="Enable SMTP Debugging Messages">false</urn:Field>
+    </urn:Fields>
+    <urn:AdvancedFields>
+        <urn:Field name="Connection Timeout">30</urn:Field>
+        <urn:Field name="Retry Attempt">2</urn:Field>
+        <urn:Field name="Retry Delay">2</urn:Field>
+        <urn:Field name="Enable SMTP Debugging Messages">false</urn:Field>
+    </urn:AdvancedFields>
+    <urn:Tables/>
+</urn:PluginConfiguration>

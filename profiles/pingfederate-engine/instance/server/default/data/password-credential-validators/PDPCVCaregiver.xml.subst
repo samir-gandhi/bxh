@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:PluginConfiguration isInheritExtendedContractAttributes="true" name="PDPCV Caregiver" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields>
+        <urn:Field name="Search Filter">(&amp;(bxHealthUserType=Caretaker)(|(uid=${username})(mail=${username})))</urn:Field>
+    </urn:Fields>
+    <urn:AdvancedFields/>
+    <urn:Tables/>
+</urn:PluginConfiguration>

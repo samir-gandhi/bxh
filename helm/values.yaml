@@ -3,9 +3,10 @@
 # All variables `GITHUB_REF` on this file are defined in scripts/lib.sh
 #  and will be converted to hardcoded strings by the script
 
-# Settings to be applied to every product are defined under global
-global:
-  # TODO: find somewhere to show tag
+bxhealthapp:
+  enabled: true
+  image:
+    name: "bxhealthapp${REACT_IMAGE_SUFFIX}"
   ingress:
     enabled: true
     addReleaseNameToHost: prepend
@@ -14,103 +15,185 @@ global:
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       kubernetes.io/ingress.class: "nginx-public"
-  # Environment variables that should exist in every product are listed in global.envs
-  envs:
-    ## CHANGEME - hardcode this line
-    SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
-    ## CHANGEME - hardcode this line
-    SERVER_PROFILE_ADMIN_URL: "https://github.com/${GITHUB_REPOSITORY}"
 
-pingaccess-admin:
-  privateCert:
-    generate: true
-  enabled: true
-  envs:
-    # PingAccess Admin Console will receive the admin and engine profile.
-    SERVER_PROFILE_ADMIN_PATH: profiles/pingaccess-admin
-    # On the default values.yaml we use the repository default branch
-    SERVER_PROFILE_PARENT: ADMIN
-    SERVER_PROFILE_PATH: profiles/pingaccess-engine
-    # <PRODUCT>_PROFILE_SHA is used to trigger a rolling update of the product
-    #   SHA is based on git history of the profiles folder.
-    PA_ADMIN_PROFILE_SHA: "${PINGACCESS_ADMIN_SHA}"
-    PA_ENGINE_PROFILE_SHA: "${PINGACCESS_ENGINE_SHA}"
-  container:
-    waitFor:
-      pingfederate-admin:
-        service: https
-        timeoutSeconds: 600
+ping-devops:
+  global:
+    # TODO: find somewhere to show tag
+    ingress:
+      enabled: false
+      addReleaseNameToHost: prepend
+      defaultDomain: "ping-devops.com"
+      defaultTlsSecret:
+      annotations:
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        kubernetes.io/ingress.class: "nginx-public"
+    # Environment variables that should exist in every product are listed in global.envs
+    envs:
+      ## CHANGEME - hardcode this line
+      SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
+      ## CHANGEME - hardcode this line
+      SERVER_PROFILE_ADMIN_URL: "https://github.com/${GITHUB_REPOSITORY}"
+      REACT_APP_HOST: "${FQDN}"
+      REACT_APP_ENV: "${REACT_APP_ENV_NAME}"
+      BXH_APP_PRIVATE_HOSTNAME: "${RELEASE}-bxhealthapp"
+      PA_ENGINE_PUBLIC_HOSTNAME: "${FQDN}"
+      PF_ENGINE_PUBLIC_HOSTNAME: "${FQDN}"
+      PD_ENGINE_PUBLIC_HOSTNAME: "${FQDN}"
+      PAZ_ENGINE_PUBLIC_HOSTNAME: "${FQDN}"
+      PD_DELEGATOR_PUBLIC_HOSTNAME: "${FQDN}"
+      PDG_ENGINE_PUBLIC_HOSTNAME: "${FQDN}"
+      PDGP_ENGINE_PUBLIC_HOSTNAME: "${FQDN}"
+      PF_USER_PWD: 2FederateM0re!
+      USER_BASE_DN: "dc=bxhealth,dc=org"
+      PING_IDENTITY_PASSWORD: 2FederateM0re!
+      GIT_PATH: "bxhealth"
+      GIT_URL: "https://github.com/Technical-Enablement-PingIdentity/BXHealth-Apps"
+# Settings to be applied to every product are defined under global
+  pingaccess-admin:
+    image:
+      tag: 2201-7.0.3
+    workload:
+      type: Deployment
+      deployment:
+        strategy:
+          type: Recreate
+    privateCert:
+      generate: true
+    enabled: true
+    envs:
+      # PingAccess Admin Console will receive the admin and engine profile.
+      SERVER_PROFILE_ADMIN_PATH: profiles/pingaccess-admin
+      # On the default values.yaml we use the repository default branch
+      SERVER_PROFILE_PARENT: ADMIN
+      SERVER_PROFILE_PATH: profiles/pingaccess-engine
+      # <PRODUCT>_PROFILE_SHA is used to trigger a rolling update of the product
+      #   SHA is based on git history of the profiles folder.
+      PA_ADMIN_PROFILE_SHA: "${PINGACCESS_ADMIN_SHA}"
+      PA_ENGINE_PROFILE_SHA: "${PINGACCESS_ENGINE_SHA}"
 
-pingaccess-engine:
-  enabled: true
-  envs:
-    SERVER_PROFILE_PATH: profiles/pingaccess-engine
-    PA_ENGINE_PROFILE_SHA: "${PINGACCESS_ENGINE_SHA}"
-  # For products where more than 1 instance may be desired, the replicaCount option is included
-  container:
-    replicaCount: 1
-    # For PingAccess, CPU can be vertically scaled
-    resources:
-      requests:
-        cpu: 0
-      limits:
-        cpu: 2
+  pingaccess-engine:
+    enabled: true
+    image:
+      tag: 2201-7.0.3
+    workload:
+      type: Deployment
+      deployment:
+        strategy:
+          type: Recreate
+    envs:
+      SERVER_PROFILE_PATH: profiles/pingaccess-engine
+      PA_ENGINE_PROFILE_SHA: "${PINGACCESS_ENGINE_SHA}"
 
-pingfederate-admin:
-  enabled: true
-  envs:
-    SERVER_PROFILE_ADMIN_PATH: profiles/pingfederate-admin
-    SERVER_PROFILE_PARENT: ADMIN
-    SERVER_PROFILE_PATH: profiles/pingfederate-engine
+  pingfederate-admin:
+    enabled: true
+    image:
+      tag: 2201-11.0.1
+    envs:
+      SERVER_PROFILE_ADMIN_PATH: profiles/pingfederate-admin
+      SERVER_PROFILE_PARENT: ADMIN
+      SERVER_PROFILE_PATH: profiles/pingfederate-engine
 
-    PF_ADMIN_PROFILE_SHA: "${PINGFEDERATE_ADMIN_SHA}"
-    PF_ENGINE_PROFILE_SHA: "${PINGFEDERATE_ENGINE_SHA}"
+      PF_ADMIN_PROFILE_SHA: "${PINGFEDERATE_ADMIN_SHA}"
+      PF_ENGINE_PROFILE_SHA: "${PINGFEDERATE_ENGINE_SHA}"
 
-pingfederate-engine:
-  enabled: true
-  envs:
-    SERVER_PROFILE_PATH: profiles/pingfederate-engine
-    PF_ENGINE_PROFILE_SHA: "${PINGFEDERATE_ENGINE_SHA}"
-  container:
-    replicaCount: 1
-    # For PingFederate, CPU can be vertically scaled
-    resources:
-      requests:
-        cpu: 0
-      limits:
-        cpu: 2
+  pingfederate-engine:
+    enabled: true
+    image:
+      tag: 2201-11.0.1
+    workload:
+      type: Deployment
+      deployment:
+        strategy:
+          type: Recreate
+    envs:
+      SERVER_PROFILE_PATH: profiles/pingfederate-engine
+      PF_ENGINE_PROFILE_SHA: "${PINGFEDERATE_ENGINE_SHA}"
+    container:
+      replicaCount: 1
+      # For PingFederate, CPU can be vertically scaled
+      resources:
+        requests:
+          cpu: 0
+        limits:
+          cpu: 2
 
-pingdirectory:
-  enabled: true
-  envs:
-    SERVER_PROFILE_PATH: profiles/pingdirectory
-    PD_PROFILE_SHA: "${PINGDIRECTORY_SHA}"
-  container:
-    replicaCount: 1
-    # For PingDirectory, CPU can be vertically scaled, but memory request/limit should be equal
-    #   PingDirectory stores the Database in memory, allocate memory accordingly
-    resources:
-      requests:
-        cpu: 0
-        memory: 2Gi
-      limits:
-        cpu: 2
-        memory: 2Gi
+  pingdirectory:
+    enabled: true
+    envs:
+      SERVER_PROFILE_PATH: profiles/pingdirectory
+      PD_PROFILE_SHA: "${PINGDIRECTORY_SHA}"
+    container:
+      replicaCount: 1
+      # For PingDirectory, CPU can be vertically scaled, but memory request/limit should be equal
+      #   PingDirectory stores the Database in memory, allocate memory accordingly
+      resources:
+        requests:
+          cpu: 0
+          memory: 2Gi
+        limits:
+          cpu: 2
+          memory: 2Gi
+    services:
+      ldap:
+        servicePort: 1389
+        containerPort: 1389
+        dataService: true
+      ldaps:
+        servicePort: 1636
+        containerPort: 1636
+        dataService: true
+        clusterService: true
+      https:
+        servicePort: 1443
+        containerPort: 1443
+        ingressPort: 443
+        dataService: true
+      consent:
+        servicePort: 2443
+        containerPort: 2443
+        ingressPort: 443
+        dataService: true
+      clusterServiceName: pingdirectory-cluster
 
-pingdataconsole:
-  enabled: true
-  envs:
-    SERVER_PROFILE_PATH: profiles/pingdataconsole
-    PDC_PROFILE_SHA: "${PINGDATACONSOLE_SHA}"
-
-pingauthorize:
-  enabled: true
-  envs:
-    SERVER_PROFILE_PATH: profiles/pingauthorize
-    PAZ_PROFILE_SHA: "${PINGAUTHORIZE_SHA}"
-  container:
-    replicaCount: 1
-    waitFor:
-      pingdirectory:
-        service: ldaps
-        timeoutSeconds: 600
+  pingauthorize:
+    enabled: true
+    envs:
+      SERVER_PROFILE_PATH: profiles/pingauthorize
+      PAZ_PROFILE_SHA: "${PINGAUTHORIZE_SHA}"
+    container:
+      replicaCount: 1
+      waitFor:
+        pingdirectory:
+          service: ldaps
+          timeoutSeconds: 600
+    image:
+      tag: 2201-9.0.0.0
+    workload:
+      type: Deployment
+      deployment:
+        strategy:
+          type: Recreate
+    services:
+      https:
+        servicePort: 1443
+        containerPort: 1443
+        ingressPort: 443
+        dataService: true
+      ldaps:
+        servicePort: 1636
+        containerPort: 1636
+        clusterService: true
+      clusterServiceName: pingauthorize-cluster
+      
+    pingauthorizepap:
+      enabled: true
+      image:
+        tag: 2201-9.0.0.0
+      envs:
+        SERVER_PROFILE_PATH: profiles/pingauthorizepap
+        PAZPAP_PROFILE_SHA: "${PINGAUTHORIZEPAP_SHA}"
+      workload:
+        type: Deployment
+        deployment:
+          strategy:
+            type: Recreate

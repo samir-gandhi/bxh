@@ -25,7 +25,7 @@ pa.operational.mode=${OPERATIONAL_MODE}
 # Admin Properties
 #-------------------------------------------------------------------------------
 
-admin.port=9000
+admin.port=${PA_ADMIN_PRIVATE_PORT_HTTPS}
 admin.bindAddress=0.0.0.0
 admin.ssl.protocols=${tls.default.protocols}
 admin.ssl.ciphers=${tls.default.cipherSuites}
@@ -35,7 +35,7 @@ admin.httptransport.coreThreadPoolSize=5
 # 0 means allow PingAccess to calculate the appropriate number of I/O threads for the host
 admin.httptransport.ioThreads=0
 admin.httptransport.maxThreadPoolSize=-1
-admin.httptransport.socketTimeout=30000
+admin.httptransport.socketTimeout=${PA_ENGINE_PRIVATE_PORT_HTTPS}0
 
 # Set to native to override the administrator authentication method.
 admin.auth=default
@@ -84,12 +84,12 @@ pa.default.availability.ondemand.readTimeout=-1
 # and CLUSTERED_CONSOLE_REPLICA. While in either of those modes, the cluster configuration
 # port may be disabled by setting clusterconfig.enabled to false
 clusterconfig.enabled=true
-clusterconfig.port=9090
+clusterconfig.port=${PA_ADMIN_PRIVATE_PORT_CLUSTERCONFIG}
 clusterconfig.bindAddress=0.0.0.0
 clusterconfig.acceptors=1
 clusterconfig.backlog=512
 clusterconfig.reuseAddress=true
-clusterconfig.httptransport.socketTimeout=30000
+clusterconfig.httptransport.socketTimeout=${PA_ENGINE_PRIVATE_PORT_HTTPS}0
 clusterconfig.httptransport.ioThreads=0
 clusterconfig.httptransport.coreThreadPoolSize=5
 clusterconfig.httptransport.maxThreadPoolSize=-1
@@ -106,7 +106,7 @@ admin.polling.delay=2000
 # Configuration Replication Timeouts
 #
 # These properties define the timeouts used by a CLUSTERED_ENGINE node or CLUSTERED_CONSOLE_REPLICA node when requesting configuration updates from a CLUSTERED_CONSOLE node.
-pa.config.replication.readTimeout=30000
+pa.config.replication.readTimeout=${PA_ENGINE_PRIVATE_PORT_HTTPS}0
 pa.config.replication.maxRetries=5
 pa.config.replication.connectTimeout=5000
 pa.config.replication.retryDelay=2000
@@ -124,7 +124,7 @@ engine.http.reuseAddress=true
 engine.http.enabled=true
 engine.httptransport.coreThreadPoolSize=5
 engine.httptransport.maxThreadPoolSize=-1
-engine.httptransport.socketTimeout=30000
+engine.httptransport.socketTimeout=${PA_ENGINE_PRIVATE_PORT_HTTPS}0
 # 0 means allow PingAccess to calculate the appropriate number of I/O threads for the host
 engine.httptransport.ioThreads=0
 engine.websocket.maxConnections=-1
@@ -185,7 +185,7 @@ agent.ssl.ciphers=${tls.default.cipherSuites}
 
 agent.httptransport.coreThreadPoolSize=5
 agent.httptransport.maxThreadPoolSize=-1
-agent.httptransport.socketTimeout=30000
+agent.httptransport.socketTimeout=${PA_ENGINE_PRIVATE_PORT_HTTPS}0
 # 0 means allow PingAccess to calculate the appropriate number of I/O threads for the host
 agent.httptransport.ioThreads=0
 agent.authz.header.required=true
@@ -266,7 +266,7 @@ pa.keystore.pw=OBF:AES:ipTDrgfrAy5ZGaWGKq/1SA==:60ea7cc944b5718aee1ed36328d010e0
 pf.api.maxRetries=0
 pf.api.socketTimeout=5000
 pf.api.maxConnections=-1
-pf.api.keepAliveTimeout=30000
+pf.api.keepAliveTimeout=${PA_ENGINE_PRIVATE_PORT_HTTPS}0
 pf.api.readTimeout=-1
 
 #-------------------------------------------------------------------------------

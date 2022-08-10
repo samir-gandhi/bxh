@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:PluginConfiguration isInheritExtendedContractAttributes="false" name="User Type Param Selector" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields>
+        <urn:Field name="HTTP Request Parameter Name">userType</urn:Field>
+        <urn:Field name="Case-Sensitive Matching">true</urn:Field>
+        <urn:Field name="Enable 'Any' Result Value">false</urn:Field>
+        <urn:Field name="Enable 'No Match' Result Value">false</urn:Field>
+        <urn:Field name="Enable 'Not in Request' Result Value">false</urn:Field>
+    </urn:Fields>
+    <urn:AdvancedFields/>
+    <urn:Tables/>
+    <urn:ExtendedContractAttributes>
+        <urn:AttributeName>proxy</urn:AttributeName>
+        <urn:AttributeName>patient</urn:AttributeName>
+    </urn:ExtendedContractAttributes>
+</urn:PluginConfiguration>

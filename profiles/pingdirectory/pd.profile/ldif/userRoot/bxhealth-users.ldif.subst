@@ -1,0 +1,2163 @@
+# LDIF export started at 20220713173120.418Z
+# Included branch:  ${USER_BASE_DN}
+
+dn: ${USER_BASE_DN}
+objectClass: top
+objectClass: domain
+dc: ${GIT_PATH}
+aci: (targetattr="userPassword")(version 3.0; acl "Allow users to update their own password"; allow (write) userdn="ldap:///self";)
+aci: (version 3.0; acl "PingFed Proxy Access"; allow(proxy) userdn="ldap:///cn=pingfederate,cn=root dns,cn=config";)
+aci: (targetattr!="userPassword")(version 3.0; acl "Allow the pingfederate user to do everything in this branch"; allow(all) userdn="ldap:///cn=pingfederate,cn=root dns,cn=config";)
+aci: (targetattr="userPassword")(version 3.0; acl "Allow the pingfederate user to update passwords"; allow (write) userdn="ldap:///cn=pingfederate,cn=root dns,cn=config";)
+aci: (targetattr="isMemberOf")(version 3.0; acl "Allow the pingfederate user to get memberships"; allow (read) userdn="ldap:///cn=pingfederate,cn=root dns,cn=config";)
+aci: (targetcontrol="1.3.6.1.4.1.42.2.27.9.5.8")(version 3.0; acl "Access to the Account Usability Control"; allow (read) userdn="ldap:///cn=pingfederate,cn=root dns,cn=config";)
+aci: (targetcontrol="1.3.6.1.4.1.30221.2.5.40")(version 3.0; acl "Access to the Password Validation Details Request Control"; allow (read) userdn="ldap:///${USER_BASE_DN}";)
+modifyTimestamp: 20200520200053.508Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: ddaeadb8-4a7d-3a7e-90fd-760f077477f2
+
+dn: ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: organizationalUnit
+ou: People
+createTimestamp: 20200514224357.908Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224357.908Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 126d7320-dd62-4852-baeb-3972fe7b5b40
+
+dn: ou=Consents,${USER_BASE_DN}
+objectClass: top
+objectClass: organizationalUnit
+ou: Consents
+createTimestamp: 20200514224358.108Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224358.108Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 531f9eb4-450f-4445-a3df-99ae97a12d77
+
+dn: ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: organizationalUnit
+ou: oauthClients
+createTimestamp: 20200514224358.196Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224358.196Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: f5b3edb8-4724-4e83-9740-d8ec81a5da1c
+
+dn: ou=Groups,${USER_BASE_DN}
+objectClass: top
+objectClass: organizationalUnit
+ou: Groups
+createTimestamp: 20200514224358.019Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224358.019Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: ff5551f7-7632-48f0-8205-aac30b82c5de
+
+dn: ou=sessions,${USER_BASE_DN}
+objectClass: top
+objectClass: organizationalUnit
+ou: sessions
+createTimestamp: 20200514224358.421Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224358.421Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 70b034cf-e686-47a5-90b6-ce67be800b7b
+
+dn: pf-authn-session-group-id=84d9HFSA1mSApAtKtswUrANft,ou=sessions,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-authn-session-groups
+pf-authn-session-group-metadata: eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiemlwIjoiREVGIiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMS4xLjAuMTEifQ..J1MxxYUiV9ACkk88MJAAuw.DmjG52RStXpEo7TFbc-lfAgRqu7XPt-Hmvl6qsCIYMr6ADr5nRvSOC8F82ygG9f1vQnzU8i3VWmkuoqmlKJw1xtKpdV6i-XWgzur48tiQk7xM0z0k6E26IcCFIM8gdW_QeARecwGmkwvtRA_0pCUKTejXZFjLOulfRY3OIMSTRhDiUaiYimCfNqWWORoJMXoJPinWZfbj1KwC-OaCjy9epL-OmC7v_eEQ2DrZA_uQJ90Y2wSCoCJ3Cb4aHJ_9WU0Qd6fJzF_ifHPEKSQ9wIZ1A.sHZS5XGmU_P91oErXi7Omg
+pf-authn-session-group-expiry-time: 20220713183417.628Z
+pf-authn-session-group-last-activity-time: 20220713163311.077Z
+pf-authn-session-group-id: 84d9HFSA1mSApAtKtswUrANft
+pf-authn-session-group-hashed-session-id: gPld2_cPyn9jYD9AheUoA_hEXNrqzRtL4HA-wSKnyy0
+createTimestamp: 20220713163311.080Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: ead1ea09-09cc-4290-9234-e08b471f2067
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20220713163417.632Z
+
+dn: pf-authn-session-group-id=6HCq9y2LAvunUye0trJ9BXcK7,ou=sessions,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-authn-session-groups
+pf-authn-session-group-metadata: eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiemlwIjoiREVGIiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMS4xLjAuMTEifQ..u5s0eIsUAZOiqflPm-hbAQ.wM04UdBvUChglFKCP6TAcD-HEQkKm67Wg913pESd2ipveKd2UQu7-mdZbF_sbJ2xkw8qPuPb7cfctDGhidkQ4pQJfJi2o1JVnR16tlPaSVGkVk1LdtnR-cy7KCamc0DMKhO_DRNq3XdZfcth0vqgNnY5IDCiXYMEoYtW4zL_HwnhN1J2BOMutsrSx6fj2TQbs4Ab4RthLA1SZDog4jZgmXPPd4_ci73Znthex7kuAFw9Im2qrRw08NravkdJNdBmQkEq_baKNHTFY17KJhSR6g.VxgFGiSpPfGwjzTEqdE2Pg
+pf-authn-session-group-expiry-time: 20220713183731.710Z
+pf-authn-session-group-last-activity-time: 20220713163718.639Z
+pf-authn-session-group-id: 6HCq9y2LAvunUye0trJ9BXcK7
+pf-authn-session-group-hashed-session-id: 3Y2znlB1nQESVicWptXkmTtVNEvLM5CapkgJoTBUFsw
+createTimestamp: 20220713163718.642Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 340568f2-7cf1-40f4-82f3-59fa41fa3e15
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20220713163731.713Z
+
+dn: entryUUID=521d4f7e-6ecc-471b-87ef-508fbcec873e,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: rossgeller
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: monicageller
+ping-consent-subject: monicageller
+ping-consent-actor-dn: uid=monicageller,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=monicageller,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"false", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"false", "observation":"false", "practitioner":"false", "procedure":"false" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20220713164915.446Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 521d4f7e-6ecc-471b-87ef-508fbcec873e
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713165015.912Z
+
+dn: entryUUID=1f5aea3f-3eed-4934-a4c2-2676729d5059,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac1
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zp1
+ping-consent-subject: zp1
+ping-consent-actor-dn: uid=zp1,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zp1,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"false", "message-doctor":"false", "manage-appointments":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211221214758.804Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211221214758.804Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 1f5aea3f-3eed-4934-a4c2-2676729d5059
+
+dn: entryUUID=5f92f2e4-c260-4e26-9617-91d1bccdf28b,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: testcaretaker
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: testpatient
+ping-consent-subject: testpatient
+ping-consent-actor-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"false", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"false", "observation":"false", "practitioner":"false", "procedure":"false" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211222155939.562Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222160650.543Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 5f92f2e4-c260-4e26-9617-91d1bccdf28b
+
+dn: pf-oauth-client-id=PingIntrospect,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: Ping Introspect
+pf-oauth-client-last-modified: 1589496261019
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: urn:pingidentity.com:oauth2:grant_type:validate_bearer
+pf-oauth-client-supplemental-info: 21:CIBA_POLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 18:PAIRWISE_USER_TYPE:false
+pf-oauth-client-supplemental-info: 26:CIBA_NOTIFICATION_ENDPOINT:null
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:jwtDefault
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:null
+pf-oauth-client-supplemental-info: 37:CIBA_REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 21:SECTOR_IDENTIFIER_URI:null
+pf-oauth-client-supplemental-info: 25:RESTRICTED_RESPONSE_TYPES:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:true
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:null
+pf-oauth-client-id: PingIntrospect
+pf-oauth-client-description: This client is used to Introspect and validate PF-issued access_tokens
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: 3NKhy7ANkSBTHtko7JiUNlywQfZaUzqqPXCIbzIRhTo.EUUJkT9Z.2
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: FALSE
+createTimestamp: 20200514224421.022Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224421.022Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: f3adb0ab-530c-4586-9e12-cfb1faa41ec1
+
+dn: entryUUID=47dde0ae-9ba0-4b9c-ab6e-8a81b7e8e674,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: careone
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: testpatient
+ping-consent-subject: testpatient
+ping-consent-actor-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"false", "message-doctor":"true", "manage-appointments":"false" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211222160730.047Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222161432.191Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 47dde0ae-9ba0-4b9c-ab6e-8a81b7e8e674
+
+dn: entryUUID=f7abd9d1-3504-434c-8e2a-e45f50b9a366,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: testcaretaker
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: testpatient
+ping-consent-subject: testpatient
+ping-consent-actor-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"false", "message-doctor":"false", "manage-appointments":"true" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211222155939.557Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222160650.542Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: f7abd9d1-3504-434c-8e2a-e45f50b9a366
+
+dn: entryUUID=0285aa3f-41a5-4154-baa1-583f7a8b3c86,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac3
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: testpatient
+ping-consent-subject: testpatient
+ping-consent-actor-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"false", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"false", "observation":"false", "practitioner":"false", "procedure":"false" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211222160650.651Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222161107.863Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 0285aa3f-41a5-4154-baa1-583f7a8b3c86
+
+dn: entryUUID=b2d2a348-16c1-4d99-a2da-db0b267fe1ec,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac2
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zp
+ping-consent-subject: zp
+ping-consent-actor-dn: uid=zp,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zp,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"true", "message-doctor":"true", "manage-appointments":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211221190032.579Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220104190034.381Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: b2d2a348-16c1-4d99-a2da-db0b267fe1ec
+
+dn: entryUUID=45729d7a-5ce2-4709-ba1c-03e55be7eca6,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: careone
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: ssmith
+ping-consent-subject: ssmith
+ping-consent-actor-dn: uid=ssmith,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=ssmith,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"true", "diagnosticreport":"true", "immunization":"true", "medicationrequest":"true", "observation":"true", "practitioner":"true", "procedure":"true" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211222143735.280Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222143754.845Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 45729d7a-5ce2-4709-ba1c-03e55be7eca6
+
+dn: entryUUID=80c17381-f371-450e-b1ef-c8e8f6acf03d,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac1
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zp
+ping-consent-subject: zp
+ping-consent-actor-dn: uid=zp,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zp,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"false", "message-doctor":"false", "manage-appointments":"true" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211221185311.209Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211221190032.452Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 80c17381-f371-450e-b1ef-c8e8f6acf03d
+
+dn: uid=caregiverqa,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: caregiverqa@mailinator.com
+sn: LCaregiver
+cn: FCaregiver LCaregiver
+bxHealthUserPatientNumber: 
+bxHealthUserDependents: { "children":[ ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=caregiverqa
+givenName: FCaregiver
+mobile: 3039902687
+bxHealthUserPatientRecordId: 
+userPassword: {SSHA256}D4uPkHCXKz4I0sGvWokM7J2hAWrZGRGUyTv8VzE1jRpKUEKy7R2wBA==
+bxHealthUserType: Caretaker
+uid: caregiverqa
+createTimestamp: 20220104192533.652Z
+pwdChangedTime: 20220104192533.652Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220104192533.652Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 5b544b90-a895-408d-abec-1846803c76e3
+
+dn: entryUUID=8ba143a1-6ffd-416d-a765-948390fc8073,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac1
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zp1
+ping-consent-subject: zp1
+ping-consent-actor-dn: uid=zp1,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zp1,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"false", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"false", "observation":"false", "practitioner":"false", "procedure":"false" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211221214758.833Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211221214758.833Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 8ba143a1-6ffd-416d-a765-948390fc8073
+
+dn: ou=grants,${USER_BASE_DN}
+objectClass: top
+objectClass: organizationalUnit
+ou: grants
+createTimestamp: 20200514224358.311Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224358.311Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 74cb60c2-f266-48b7-8242-91bd315d3b08
+
+dn: uid=caregiverremy,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: rlyle+caregiver@pingidentity.com
+sn: Jones
+cn: Alex Jones
+bxHealthUserPatientNumber: 
+bxHealthUserDependents: { "children":[ ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=caregiverremy
+givenName: Alex
+mobile: 8138430545
+bxHealthUserPatientRecordId: 
+userPassword: {SSHA256}drFVjDCDzd6nFZxdjNTUeLxd+JPfIL/PJVw6Sj43he5Qp0i/hHql7A==
+bxHealthUserType: Caretaker
+uid: caregiverremy
+createTimestamp: 20220105184806.140Z
+pwdChangedTime: 20220105184806.140Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220105184806.140Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 6bece07a-5141-4e82-aaac-08dd70958243
+
+dn: uid=appowner.1,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: Lemke
+cn: appowner.1
+employeeType: Application-Owner
+givenName: Patience
+pf-connected-identity: auth-source=pf-local-identity:user-id=appowner.1
+userPassword: {SSHA256}ZONCXSaJehkNH2mMgtDVTobUrAacoN6ymGAEctT6tQYtw2on5KxUBA==
+uid: appowner.1
+createTimestamp: 20200514225053.135Z
+pwdChangedTime: 20200514225053.135Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514225053.135Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: b98afc15-e8bf-4f0f-8474-106c1dd48cfc
+
+dn: entryUUID=a872a0a4-de1a-4ece-a6cf-5b3be2f90e84,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: caregiverqa
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: patientqa
+ping-consent-subject: patientqa
+ping-consent-actor-dn: uid=patientqa,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=patientqa,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"true", "diagnosticreport":"true", "immunization":"true", "medicationrequest":"true", "observation":"true", "practitioner":"true", "procedure":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20220104193720.616Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220104202233.451Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: a872a0a4-de1a-4ece-a6cf-5b3be2f90e84
+
+dn: entryUUID=fd100101-95b5-4149-a5ec-99db1f58bc11,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zcnew
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zpnew
+ping-consent-subject: zpnew
+ping-consent-actor-dn: uid=zpnew,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zpnew,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"true", "message-doctor":"false", "manage-appointments":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211229213514.727Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211230204833.487Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: fd100101-95b5-4149-a5ec-99db1f58bc11
+
+dn: entryUUID=08208166-f8ba-400e-a312-1d0241c6dd75,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: bsmith
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: ssmith
+ping-consent-subject: ssmith
+ping-consent-actor-dn: uid=ssmith,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=ssmith,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"false", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"false", "observation":"false", "practitioner":"false", "procedure":"false" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211222142538.355Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222213824.436Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 08208166-f8ba-400e-a312-1d0241c6dd75
+
+dn: entryUUID=354c35b3-0f94-44d7-954c-aa9701d99da0,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: careone
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: testpatient
+ping-consent-subject: testpatient
+ping-consent-actor-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"false", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"false", "observation":"false", "practitioner":"false", "procedure":"false" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211222160730.190Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222161432.293Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 354c35b3-0f94-44d7-954c-aa9701d99da0
+
+dn: entryUUID=4c4c948f-164b-4088-82d7-8dce2215b66b,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac3
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: testpatient
+ping-consent-subject: testpatient
+ping-consent-actor-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=testpatient,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"false", "message-doctor":"false", "manage-appointments":"true" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211222160650.652Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222161107.775Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 4c4c948f-164b-4088-82d7-8dce2215b66b
+
+dn: cn=PFAuditorGroup,ou=Groups,${USER_BASE_DN}
+objectClass: top
+objectClass: groupOfNames
+cn: PFAuditorGroup
+member: uid=auditor,ou=People,${USER_BASE_DN}
+createTimestamp: 20200514224359.164Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224359.164Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 3cbd6acb-f5ed-446f-b590-9f568ee02d41
+
+dn: uid=auditor,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: PingFederate
+cn: auditor
+givenName: Auditor
+pf-connected-identity: auth-source=pf-local-identity:user-id=auditor
+userPassword: {SSHA256}rJ9kII0SoQvnSLV7yEzMp6yHuee99lq1B4jJ3zpZQGymYQhVXGmviQ==
+uid: auditor
+createTimestamp: 20200514224358.675Z
+pwdChangedTime: 20200514224358.675Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224358.675Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: e3bcdc60-370f-461c-b940-3513b072b476
+
+dn: pf-oauth-client-id=pingservices,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: Ping Services
+pf-oauth-client-last-modified: 1589496260946
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: client_credentials
+pf-oauth-client-supplemental-info: 21:CIBA_POLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 18:PAIRWISE_USER_TYPE:false
+pf-oauth-client-supplemental-info: 26:CIBA_NOTIFICATION_ENDPOINT:null
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:jwtDefault
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:null
+pf-oauth-client-supplemental-info: 37:CIBA_REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 21:SECTOR_IDENTIFIER_URI:null
+pf-oauth-client-supplemental-info: 25:RESTRICTED_RESPONSE_TYPES:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:null
+pf-oauth-client-id: pingservices
+pf-oauth-client-description: This client is used by Services to ask for API Tokens (Client_Credentials)
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: 7BaVbVxpv_iBz79hIdc854uuWhyxzF7RTLmNeiWX8oc.jFs5-i2a.2
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20200514224420.947Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224420.947Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 337733a6-3ccd-4174-b2b2-02a27e18a371
+
+dn: entryUUID=c7937ae6-6e03-44c7-bca0-321d66f34b5c,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zcnew
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zpnew
+ping-consent-subject: zpnew
+ping-consent-actor-dn: uid=zpnew,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zpnew,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"true", "diagnosticreport":"true", "immunization":"true", "medicationrequest":"true", "observation":"true", "practitioner":"true", "procedure":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211229213514.727Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211230204833.480Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: c7937ae6-6e03-44c7-bca0-321d66f34b5c
+
+dn: cn=PFAdminGroup,ou=Groups,${USER_BASE_DN}
+objectClass: top
+objectClass: groupOfNames
+cn: PFAdminGroup
+member: uid=administrator,ou=People,${USER_BASE_DN}
+member: uid=access2federate,ou=People,${USER_BASE_DN}
+createTimestamp: 20200514224358.955Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224358.955Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: bc4d7fd0-ed78-4a53-923b-f48829409a47
+
+dn: entryUUID=cac3313c-9744-4d58-82c3-8c66e8f14c09,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac3
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zpnew
+ping-consent-subject: zpnew
+ping-consent-actor-dn: uid=zpnew,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zpnew,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"false", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"false", "observation":"false", "practitioner":"false", "procedure":"false" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211229214324.386Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211229224246.879Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: cac3313c-9744-4d58-82c3-8c66e8f14c09
+
+dn: entryUUID=29529a94-c9ac-468b-b42e-8811cf770bf3,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: caregiverqa
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: patientqa
+ping-consent-subject: patientqa
+ping-consent-actor-dn: uid=patientqa,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=patientqa,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"true", "message-doctor":"true", "manage-appointments":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20220104193720.616Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220104202233.410Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 29529a94-c9ac-468b-b42e-8811cf770bf3
+
+dn: uid=user.0,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: user.0@mailinator.com
+sn: Legros
+cn: user.0
+givenName: Amara
+pf-connected-identity: auth-source=pf-local-identity:user-id=user.0
+userPassword: {SSHA256}iFHoKDxJfGz4kPBKtDCpXH5tQBZcKrhucQ2ATNf47cvU/iJ6bYqXeA==
+uid: user.0
+createTimestamp: 20200514224359.335Z
+pwdChangedTime: 20200514224359.335Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200527213834.529Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 8b7484e7-28fd-47bc-8bb0-f1274b2c6369
+
+dn: entryUUID=d2857bf5-b27a-4200-a6dd-dbab0fa917f9,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac2
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zp
+ping-consent-subject: zp
+ping-consent-actor-dn: uid=zp,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zp,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"true", "diagnosticreport":"true", "immunization":"true", "medicationrequest":"true", "observation":"true", "practitioner":"true", "procedure":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211221190032.631Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220104190034.386Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: d2857bf5-b27a-4200-a6dd-dbab0fa917f9
+
+dn: uid=appowner.0,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: Schmitt
+cn: appowner.0
+employeeType: Application-Owner
+givenName: Russel
+pf-connected-identity: auth-source=pf-local-identity:user-id=appowner.0
+userPassword: {SSHA256}kKqUdKRFk6KjPVM9mg6/WhWHUQBxOp0SBWTnIz/WjpTHkyFBOo/4Bg==
+uid: appowner.0
+createTimestamp: 20200514225053.016Z
+pwdChangedTime: 20200514225053.016Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514225053.016Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 4eff9ca4-175e-4f0f-b995-9d365f968a42
+
+dn: uid=caregiver1,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: caregiver1@mailinator.com
+sn: Parsons
+cn: Nikki Parsons
+bxHealthUserPatientNumber: 
+bxHealthUserDependents: { "children":[ ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=caregiver1
+givenName: Nikki
+mobile: 6196022299
+bxHealthUserPatientRecordId: 
+userPassword: {SSHA256}IcVVCV+pGs3gKHOGZ4SniSgwPN8okxnytCERyPymxEHBepyhXwSGWQ==
+bxHealthUserType: Caretaker
+uid: caregiver1
+createTimestamp: 20211218005820.962Z
+pwdChangedTime: 20211218005820.962Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211218005820.962Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 61723c5f-5146-4dac-afcc-44f5e32729b5
+
+dn: uid=caregiver2,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: caregiver2@mailinator.com
+sn: Landy
+cn: Pamela Landy
+bxHealthUserPatientNumber: 
+bxHealthUserDependents: { "children":[ ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=caregiver2
+givenName: Pamela
+mobile: 6196022299
+bxHealthUserPatientRecordId: 
+userPassword: {SSHA256}do2W4EbIK1DGqhC8Ba++y9fYOp/Y5FKLEihwdndBsZspZ/R47LBz0w==
+bxHealthUserType: Caretaker
+uid: caregiver2
+createTimestamp: 20220106235602.181Z
+pwdChangedTime: 20220106235602.181Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220106235602.181Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 5bf5e98d-8b16-43a6-90e7-2dc91852fbcc
+
+dn: cn=group.0,ou=Groups,${USER_BASE_DN}
+objectClass: top
+objectClass: groupOfNames
+cn: group.0
+member: uid=user.0,ou=people,${USER_BASE_DN}
+createTimestamp: 20200514224359.789Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224359.789Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: eb9cc3cf-b010-441b-9cec-c782c82ba7d5
+
+dn: uid=administrator,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: PingFederate
+cn: administrator
+employeeType: IAM-Admin
+givenName: Administrator
+pf-connected-identity: auth-source=pf-local-identity:user-id=administrator
+userPassword: {SSHA256}b7BuZq5wGeBKPjRoXjtCd2DVoPZ76eU1VijW8dB2yzQyOKlH8Sv9PQ==
+uid: administrator
+createTimestamp: 20200514224358.521Z
+pwdChangedTime: 20200514224358.521Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514225053.245Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: fb969e04-2700-47c9-b12a-05c7ce9ab6fa
+
+dn: uid=marketingApp,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+sn: App
+cn: Marketing App
+givenName: Marketing
+pf-connected-identity: auth-source=pf-local-identity:user-id=user.4
+uid: marketingApp
+createTimestamp: 20200514224359.702Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+pwdChangedTime: 20200601205324.178Z
+modifyTimestamp: 20200601205324.178Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 0460bc4a-6b5a-4797-a46b-64f5cba2671a
+
+dn: uid=user.2,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: Nikolaus
+cn: user.2
+givenName: Rogelioo
+pf-connected-identity: auth-source=pf-local-identity:user-id=user.2
+userPassword: {SSHA256}e33PU6CQp9L3sW743jlcNYAnfAeyuqgGafh7nftXYGaVM/SgefSY2w==
+uid: user.2
+createTimestamp: 20200514224359.506Z
+pwdChangedTime: 20200514224359.506Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224359.506Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: aaf8dacc-9c4f-4ccf-a3ee-e415448711c2
+
+dn: uid=access2federate,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: PingAccess
+cn: pingFederateAdministrator
+givenName: PingAccess
+pf-connected-identity: auth-source=pf-local-identity:user-id=access2federate
+userPassword: {SSHA256}4sswRMI5dSbTc+eGiboXOjzLrLqR6kZcctphdaDz1a+uVCHD/OeHag==
+uid: access2federate
+createTimestamp: 20200514224358.814Z
+pwdChangedTime: 20200514224358.813Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224358.814Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 7fd333e4-17a2-454f-ad7c-c925cce36eb4
+
+dn: entryUUID=398f4902-4996-4ae1-ade4-81367c5c3e1a,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac1
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zp
+ping-consent-subject: zp
+ping-consent-actor-dn: uid=zp,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zp,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"false", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"false", "observation":"false", "practitioner":"false", "procedure":"false" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20211221185311.208Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211221190032.466Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 398f4902-4996-4ae1-ade4-81367c5c3e1a
+
+dn: uid=patientqa,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: patientqa@mailinator.com
+pf-connected-identity: auth-source=pf-local-identity:user-id=patientqa
+givenName: PFirst
+mobile: 3039902687
+sn: PLast
+cn: PFirst PLast
+bxHealthUserPatientNumber: 123123
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":13 }, { "name":"Louis", "age":0 }, { "name":"Lacey", "age":13 } ] }
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}EdxspY87ri7QQrQCYGrvC0fUus5RHVA6Eojehe01Wi/42Q+qVJaH7A==
+bxHealthUserType: Patient
+bxHealthUserCaretakerDN: uid=caregiverqa,ou=People,${USER_BASE_DN}
+uid: patientqa
+createTimestamp: 20220104192332.706Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+pwdChangedTime: 20220104220903.237Z
+modifyTimestamp: 20220107214939.461Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 29d0d02a-a91f-4f03-ab14-621c05939bd4
+
+dn: entryUUID=f014aa07-c31b-473b-b842-8bcf42383661,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: careone
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: ssmith
+ping-consent-subject: ssmith
+ping-consent-actor-dn: uid=ssmith,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=ssmith,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"true", "message-doctor":"true", "manage-appointments":"true" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211222143735.227Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222143754.838Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: f014aa07-c31b-473b-b842-8bcf42383661
+
+dn: uid=patient1,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: patient1@mailinator.com
+pf-connected-identity: auth-source=pf-local-identity:user-id=patient1
+givenName: John Michael
+mobile: 6196022299
+sn: Kane
+cn: John Michael Kane
+bxHealthUserPatientNumber: 1123581321
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":9 }, { "name":"Louis", "age":15 }, { "name":"Lacey", "age":18 } ] }
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}yf3jcp2mgv9eE8dcuVXkQfVlgQAbvWgPJfsjZradK/b//dCXUY3rJQ==
+bxHealthUserType: Patient
+bxHealthUserCaretakerDN: uid=caregiver1,ou=People,${USER_BASE_DN}
+uid: patient1
+createTimestamp: 20211218005710.046Z
+pwdChangedTime: 20211218005710.046Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220107214911.838Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: a5f6160c-4f7a-4de2-954c-61f85d4331fe
+
+dn: cn=PFUserAdminGroup,ou=Groups,${USER_BASE_DN}
+objectClass: top
+objectClass: groupOfNames
+cn: PFUserAdminGroup
+member: uid=administrator,ou=People,${USER_BASE_DN}
+createTimestamp: 20200514224359.244Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224359.244Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: e0846523-5592-476c-9be8-2495d2ade276
+
+dn: cn=PFCryptoGroup,ou=Groups,${USER_BASE_DN}
+objectClass: top
+objectClass: groupOfNames
+cn: PFCryptoGroup
+member: uid=administrator,ou=People,${USER_BASE_DN}
+createTimestamp: 20200514224359.076Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224359.076Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: cd5efa8c-16aa-4d07-9f11-b49eb6b4964f
+
+dn: pf-oauth-client-id=privacy-dashboard,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: Privacy Dashboard
+pf-oauth-client-last-modified: 1589496714748
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: implicit
+pf-oauth-client-redirect-uri: https://demo.${GIT_PATH}.xyz/*
+pf-oauth-client-supplemental-info: 21:CIBA_POLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 18:PAIRWISE_USER_TYPE:false
+pf-oauth-client-supplemental-info: 26:CIBA_NOTIFICATION_ENDPOINT:null
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:jwtDefault
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:["urn:pingidentity:consent-unpriv","urn:pingidentity:consent-priv"]
+pf-oauth-client-supplemental-info: 37:CIBA_REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 22:ALLOW_EXCLUSIVE_SCOPES:true
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 21:SECTOR_IDENTIFIER_URI:null
+pf-oauth-client-supplemental-info: 25:RESTRICTED_RESPONSE_TYPES:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:OIDCPolicyDefault
+pf-oauth-client-supplemental-info: 18:pf_ecm_authNexp_00:Basic
+pf-oauth-client-id: privacy-dashboard
+pf-oauth-client-description: This client is used to Authenticate to the Privacy Dashboard
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: NONE
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20200514225154.749Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20200514225154.749Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: b224010f-b3af-476e-bc5e-5543a8968480
+
+dn: entryUUID=2ca28ba2-3501-4083-abab-21d82e915f69,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: caregiverremy
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: patientremy
+ping-consent-subject: patientremy
+ping-consent-actor-dn: uid=patientremy,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=patientremy,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"false", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"true", "observation":"true", "practitioner":"true", "procedure":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20220105185417.369Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220105202127.297Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 2ca28ba2-3501-4083-abab-21d82e915f69
+
+dn: uid=patientremy,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: rlyle+patient@pingidentity.com
+pf-connected-identity: auth-source=pf-local-identity:user-id=patientremy
+givenName: Jane
+mobile: 8138430545
+sn: Smithz
+cn: Jane Smithz
+bxHealthUserPatientNumber: 6910373468
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":18 }, { "name":"Louis", "age":18 }, { "name":"Lacey", "age":18 } ] }
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}wSFgiFiSvhyVGKHgc8MI/HDFnKfjW2DgarNDEqVh3SYJWzCqAss8jg==
+bxHealthUserType: Patient
+bxHealthUserCaretakerDN: uid=caregiverremy,ou=People,${USER_BASE_DN}
+uid: patientremy
+createTimestamp: 20220105184648.658Z
+pwdChangedTime: 20220105184648.658Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220107214949.890Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: ee631ecf-c5ec-499d-be11-3b67ac88cb68
+
+dn: entryUUID=fde3b626-b4e0-4771-8ee4-5a500681ea3a,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: caregiverremy
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: patientremy
+ping-consent-subject: patientremy
+ping-consent-actor-dn: uid=patientremy,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=patientremy,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"true", "message-doctor":"false", "manage-appointments":"false" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20220105185417.365Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220105202127.304Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: fde3b626-b4e0-4771-8ee4-5a500681ea3a
+
+dn: pf-oauth-client-id=pingdatagovernance,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: PingDataGovernance
+pf-oauth-client-last-modified: 1589496736994
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: client_credentials
+pf-oauth-client-supplemental-info: 21:CIBA_POLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 18:PAIRWISE_USER_TYPE:false
+pf-oauth-client-supplemental-info: 26:CIBA_NOTIFICATION_ENDPOINT:null
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:jwtDefault
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:["urn:pingidentity:consent-unpriv","urn:pingidentity:consent-priv","urn:pingidentity:directory"]
+pf-oauth-client-supplemental-info: 37:CIBA_REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 22:ALLOW_EXCLUSIVE_SCOPES:true
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 21:SECTOR_IDENTIFIER_URI:null
+pf-oauth-client-supplemental-info: 25:RESTRICTED_RESPONSE_TYPES:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:OIDCPolicyDefault
+pf-oauth-client-supplemental-info: 18:pf_ecm_authNexp_00:Basic
+pf-oauth-client-id: pingdatagovernance
+pf-oauth-client-description: This client is used by DG / PAP to call REST APIs
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: S5ucCHTVl2R-puNDqg4t_FVK_eYBYOPmSNhP_eRWUtk.dXXmLS2r.2
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20200514225216.997Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20200514225216.997Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 0c682687-4dcb-4d9d-9109-8441a308693f
+
+dn: pf-oauth-client-id=PingAccess,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: PingAccess
+pf-oauth-client-last-modified: 1589496718185
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: authorization_code
+pf-oauth-client-redirect-uri: https://*/pa/oidc/cb
+pf-oauth-client-supplemental-info: 21:CIBA_POLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 18:PAIRWISE_USER_TYPE:false
+pf-oauth-client-supplemental-info: 26:CIBA_NOTIFICATION_ENDPOINT:null
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:jwtDefault
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:null
+pf-oauth-client-supplemental-info: 37:CIBA_REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 21:SECTOR_IDENTIFIER_URI:null
+pf-oauth-client-supplemental-info: 25:RESTRICTED_RESPONSE_TYPES:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:OIDCPolicyDefault
+pf-oauth-client-supplemental-info: 18:pf_ecm_authNexp_00:Basic
+pf-oauth-client-id: PingAccess
+pf-oauth-client-description: This client is used to Authenticate to PingAccess
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: 6H-mEqEF7drOhLShgMnmljQpHnGac6rH8lvkQ7GhE1g.QTNar7Ky.2
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20200514225158.188Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20200514225158.188Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 2aa606e3-ba59-4523-83e5-c7428661ae2c
+
+dn: pf-oauth-client-id=PingToken,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: PingToken
+pf-oauth-client-last-modified: 1640031300197
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: authorization_code
+pf-oauth-client-redirect-uri: https://${PD_DELEGATOR_PUBLIC_HOSTNAME}/app/
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:null
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 30:REFRESH_TOKEN_ROLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_MANAGEMENT_API:false
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:["patient-scopes"]
+pf-oauth-client-supplemental-info: 37:TOKEN_ENDPOINT_AUTH_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 22:ALLOW_EXCLUSIVE_SCOPES:true
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 29:ALLOW_AUTHENTICATION_API_INIT:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 23:RESTRICT_TO_DEFAULT_ATM:false
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:null
+pf-oauth-client-supplemental-info: 18:pf_ecm_authNexp_00:Patient
+pf-oauth-client-id: PingToken
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: UBVSjW3amGJvVmnXiMihvojdPgRK8smYjAGOHoBe3pI.7eGHK2_4.2
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20200526215847.155Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20211220201500.199Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: a381bd81-ab8c-4497-b86c-3ec25b9e9451
+
+dn: pf-oauth-client-id=bxHealthMobile,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: bxHealthMobile
+pf-oauth-client-last-modified: 1590702088783
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: authorization_code
+pf-oauth-client-redirect-uri: ${GIT_PATH}mobile://cb
+pf-oauth-client-supplemental-info: 22:ALLOW_EXCLUSIVE_SCOPES:false
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:null
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:null
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:null
+pf-oauth-client-supplemental-info: 37:TOKEN_ENDPOINT_AUTH_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 18:pf_ecm_authNexp_00:MFA
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-id: bxHealthMobile
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: NONE
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20200528205620.575Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20200528214128.785Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: a79651c5-8145-4c77-baf1-74ff4086b25d
+
+dn: entryUUID=a52582b6-6f43-4af1-a256-d1f73c1b78a0,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zac3
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: zpnew
+ping-consent-subject: zpnew
+ping-consent-actor-dn: uid=zpnew,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=zpnew,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"false", "message-doctor":"true", "manage-appointments":"true" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211229214324.327Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211229224246.811Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: a52582b6-6f43-4af1-a256-d1f73c1b78a0
+
+dn: pf-oauth-client-id=SingularKey,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: SingularKey
+pf-oauth-client-last-modified: 163822${PD_DELEGATOR_PRIVATE_PORT_HTTPS}812
+pf-oauth-client-restrict-scopes: TRUE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: authorization_code
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:null
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 30:REFRESH_TOKEN_ROLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_MANAGEMENT_API:false
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:null
+pf-oauth-client-supplemental-info: 37:TOKEN_ENDPOINT_AUTH_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 22:ALLOW_EXCLUSIVE_SCOPES:false
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 29:ALLOW_AUTHENTICATION_API_INIT:true
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 23:RESTRICT_TO_DEFAULT_ATM:false
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:null
+pf-oauth-client-id: SingularKey
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: NONE
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20211129225403.818Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20211129225403.818Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 9e170d4e-c474-4388-b601-e88e99832c20
+
+dn: uid=zhannap,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: zhannap@mailinator.com
+sn: patient
+cn: zhanna patient
+bxHealthUserPatientNumber: 142
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":9 }, { "name":"Louis", "age":15 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=zhannap
+givenName: zhanna
+mobile: 3036189869
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}faHmnJcwfkonTJdgodxO6IRtmYdjUxm0Dq8nJX3ViN9DzoKKGJnCew==
+bxHealthUserType: Patient
+uid: zhannap
+createTimestamp: 20220105010950.593Z
+pwdChangedTime: 20220105010950.593Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220108000404.445Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 5b9b6357-d4fd-4c75-a5e9-f516b293b800
+
+dn: pf-oauth-client-id=PingLogon,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: Ping Logon
+pf-oauth-client-last-modified: 1589496260746
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: implicit
+pf-oauth-client-grant-type: authorization_code
+pf-oauth-client-redirect-uri: https://httpbin.org/anything
+pf-oauth-client-supplemental-info: 21:CIBA_POLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 18:PAIRWISE_USER_TYPE:false
+pf-oauth-client-supplemental-info: 26:CIBA_NOTIFICATION_ENDPOINT:null
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:jwtDefault
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:null
+pf-oauth-client-supplemental-info: 37:CIBA_REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 21:SECTOR_IDENTIFIER_URI:null
+pf-oauth-client-supplemental-info: 25:RESTRICTED_RESPONSE_TYPES:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:OIDCPolicyDefault
+pf-oauth-client-supplemental-info: 18:pf_ecm_authNexp_00:Basic
+pf-oauth-client-id: PingLogon
+pf-oauth-client-description: This client is used to perform OIDC logons
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: H0qFdSfIQR2FoO7KOtEB0tO4FPdWMP_rw_4VpXlMth0.p5j99ndp.2
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20200514224420.755Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224420.755Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: c6f8365c-a139-4146-a534-84c45bef4a78
+
+dn: pf-oauth-client-id=PingIDSDKApp,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: PingID SDK App
+pf-oauth-client-last-modified: 1639682947617
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: implicit
+pf-oauth-client-grant-type: authorization_code
+pf-oauth-client-redirect-uri: com.pingidentity.developer.appauth://oidc_callback
+pf-oauth-client-supplemental-info: 21:CIBA_POLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 18:PAIRWISE_USER_TYPE:false
+pf-oauth-client-supplemental-info: 26:CIBA_NOTIFICATION_ENDPOINT:null
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:jwtDefault
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:null
+pf-oauth-client-supplemental-info: 37:CIBA_REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 21:SECTOR_IDENTIFIER_URI:null
+pf-oauth-client-supplemental-info: 25:RESTRICTED_RESPONSE_TYPES:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:false
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:OIDCPolicyDefault
+pf-oauth-client-supplemental-info: 18:pf_ecm_authNexp_00:Basic
+pf-oauth-client-id: PingIDSDKApp
+pf-oauth-client-description: This client is used to perform OIDC logons with the PingID SDK App
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: V1HCGQ1_jIm_TjFViQZnLedwz-PyastHV4TBQeCIsNo.ru478C5S.2
+pf-oauth-client-persistent-grant-exp-time: 0
+pf-oauth-client-persistent-grant-exp-time-unit: d
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20200514224420.880Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20211216192907.619Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 1b401a32-00cb-4e4e-bc3e-fb2489b5c2fd
+
+dn: entryUUID=b616bc51-811e-47ca-8e5b-0d1a6498f364,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: bsmith
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: ssmith
+ping-consent-subject: ssmith
+ping-consent-actor-dn: uid=ssmith,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=ssmith,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"false", "message-doctor":"true", "manage-appointments":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20211222142538.344Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20211222213824.411Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: b616bc51-811e-47ca-8e5b-0d1a6498f364
+
+dn: pf-oauth-client-id=PingTokenCaregiver,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: PingTokenCaregiver
+pf-oauth-client-last-modified: 1642098694082
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: refresh_token
+pf-oauth-client-grant-type: authorization_code
+pf-oauth-client-redirect-uri: https://${PD_DELEGATOR_PUBLIC_HOSTNAME}/app/
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:null
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 30:REFRESH_TOKEN_ROLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_MANAGEMENT_API:false
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:["caregiver-scopes"]
+pf-oauth-client-supplemental-info: 37:TOKEN_ENDPOINT_AUTH_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 22:ALLOW_EXCLUSIVE_SCOPES:true
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 29:ALLOW_AUTHENTICATION_API_INIT:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 23:RESTRICT_TO_DEFAULT_ATM:false
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:true
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:null
+pf-oauth-client-supplemental-info: 18:pf_ecm_authNexp_00:Caregiver
+pf-oauth-client-id: PingTokenCaregiver
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: wVT_O_sBTZmt2rpcpOAKfDPsmAWI9pPYWwVp0hztvQ4.Fi6pidIh.2
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20211108210334.282Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20220113183134.093Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 3a072a86-c24e-4b31-a271-b4b062b099be
+
+dn: uid=user.1,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+sn: Torp
+cn: user.1
+givenName: Henriette
+pf-connected-identity: auth-source=pf-local-identity:user-id=user.1
+userPassword: {SSHA256}H32zBG5P/DS4EAw69L4hslT0i9q2S2BGC8vXBK163RCoeG4b6CLpNw==
+uid: user.1
+createTimestamp: 20200514224359.420Z
+pwdChangedTime: 20200514224359.420Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200527213849.714Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 396f3343-59c5-476e-9fcd-0dc9b12d4763
+
+dn: uid=user.3,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: Bahringer
+cn: user.3
+givenName: Jessie
+pf-connected-identity: auth-source=pf-local-identity:user-id=user.3
+userPassword: {SSHA256}mMYe0RV9o9nnBClp/+TtquT9mUVpxPtq1rZN80qjKtEZB9E3mXvw8w==
+uid: user.3
+createTimestamp: 20200514224359.606Z
+pwdChangedTime: 20200514224359.605Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20200514224359.606Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 290bf292-2515-4510-bb02-1e31f99b176c
+
+dn: pf-oauth-client-id=marketingApp,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: marketingApp
+pf-oauth-client-last-modified: 1639682904989
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: client_credentials
+pf-oauth-client-supplemental-info: 22:ALLOW_EXCLUSIVE_SCOPES:false
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:null
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:null
+pf-oauth-client-supplemental-info: 7:ENABLED:false
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:null
+pf-oauth-client-supplemental-info: 37:TOKEN_ENDPOINT_AUTH_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-id: marketingApp
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: wrjkGScnK8CTIaWP1XJSZD7FP3VEqrhXU24Hyk-hvWk.DwyvgIjU.2
+pf-oauth-client-persistent-grant-exp-time: 0
+pf-oauth-client-persistent-grant-exp-time-unit: d
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: FALSE
+createTimestamp: 20200601200023.946Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20211216192824.997Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 097cefdc-9d8c-4810-8329-e09abfa51b52
+
+dn: pf-oauth-client-id=PingCentral,ou=oauthClients,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-oauth-client
+pf-oauth-client-name: PingCentral
+pf-oauth-client-last-modified: 1639682942958
+pf-oauth-client-restrict-scopes: FALSE
+pf-oauth-client-require-signed-requests: FALSE
+pf-oauth-client-grant-type: authorization_code
+pf-oauth-client-redirect-uri: https://*/login/oauth2/code/pingcentral
+pf-oauth-client-supplemental-info: 21:CIBA_POLLING_INTERVAL:null
+pf-oauth-client-supplemental-info: 44:BYPASS_ACTIVATION_CODE_CONFIRMATION_OVERRIDE:null
+pf-oauth-client-supplemental-info: 19:DEVICE_FLOW_SETTING:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 18:PAIRWISE_USER_TYPE:false
+pf-oauth-client-supplemental-info: 26:CIBA_NOTIFICATION_ENDPOINT:null
+pf-oauth-client-supplemental-info: 14:DEFAULT_ATM_ID:jwtDefault
+pf-oauth-client-supplemental-info: 23:RESTRICT_RESPONSE_TYPES:false
+pf-oauth-client-supplemental-info: 32:REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 16:EXCLUSIVE_SCOPES:null
+pf-oauth-client-supplemental-info: 37:CIBA_REQUEST_OBJECT_SIGNING_ALGORITHM:null
+pf-oauth-client-supplemental-info: 28:id_token_signed_response_alg:null
+pf-oauth-client-supplemental-info: 32:DEVICE_POLLING_INTERVAL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 26:PING_ACCESS_LOGOUT_CAPABLE:false
+pf-oauth-client-supplemental-info: 35:REQUIRE_PROOF_KEY_FOR_CODE_EXCHANGE:false
+pf-oauth-client-supplemental-info: 21:SECTOR_IDENTIFIER_URI:null
+pf-oauth-client-supplemental-info: 25:RESTRICTED_RESPONSE_TYPES:null
+pf-oauth-client-supplemental-info: 29:ACCESS_SESSION_REVOCATION_API:false
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_alg:null
+pf-oauth-client-supplemental-info: 34:PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE:SERVER_DEFAULT
+pf-oauth-client-supplemental-info: 31:id_token_encrypted_response_enc:null
+pf-oauth-client-supplemental-info: 32:VALIDATE_USING_ALL_ELIGIBLE_ATMS:false
+pf-oauth-client-supplemental-info: 7:ENABLED:false
+pf-oauth-client-supplemental-info: 23:USER_AUTHZ_URL_OVERRIDE:null
+pf-oauth-client-supplemental-info: 30:PENDING_AUTHZ_TIMEOUT_OVERRIDE:null
+pf-oauth-client-supplemental-info: 24:vnd.ping.policy_group_id:PingCentralPolicyDefault
+pf-oauth-client-supplemental-info: 18:pf_ecm_authNexp_00:Internal
+pf-oauth-client-id: PingCentral
+pf-oauth-client-description: This client is used to Authenticate to PingCentral
+pf-oauth-client-persistent-grant-exp-type: SERVER_DEFAULT
+pf-oauth-client-authn-type: SECRET
+pf-oauth-client-hashed-secret: AsqBd2rRo4hbGr50XLJ9GDEubRcpW9YFJqZL2rsn3vI.6-jx2Xj8.2
+pf-oauth-client-persistent-grant-exp-time: 0
+pf-oauth-client-persistent-grant-exp-time-unit: d
+pf-oauth-client-enforce-replay-prevention: FALSE
+pf-oauth-client-bypass-approval-page: TRUE
+createTimestamp: 20200514225053.747Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20211216192902.959Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: c8a517e9-aea3-481b-8876-29f26ecc40cf
+
+dn: uid=zcare,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: zcare@mailinator.com
+sn: Care
+cn: Z Care
+bxHealthUserPatientNumber: 
+bxHealthUserDependents: { "children":[ ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=zcare
+givenName: Z
+mobile: 3036189867
+bxHealthUserPatientRecordId: 
+userPassword: {SSHA256}3NQ3IKp//ocum4mYlziEt/70Ix9XDGxDb6VegTfxAIH9ar6iL7lJoA==
+bxHealthUserType: Caretaker
+uid: zcare
+createTimestamp: 20220705201020.921Z
+pwdChangedTime: 20220705201020.921Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 4b615908-f4d7-4ef2-aff9-517532f27c71
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220705201127.823Z
+
+dn: entryUUID=35885a3d-40cb-4d2d-a3ab-e2e384b62c44,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zcare
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: ztest
+ping-consent-subject: ztest
+ping-consent-actor-dn: uid=ztest,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=ztest,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"true", "message-doctor":"false", "manage-appointments":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20220705201541.606Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220705201541.606Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 35885a3d-40cb-4d2d-a3ab-e2e384b62c44
+
+dn: entryUUID=82b93c0d-6cb9-40d9-870f-c1017c63a3a9,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: zcare
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: ztest
+ping-consent-subject: ztest
+ping-consent-actor-dn: uid=ztest,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=ztest,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"true", "diagnosticreport":"true", "immunization":"false", "medicationrequest":"false", "observation":"true", "practitioner":"true", "procedure":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20220705201541.612Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220705201541.612Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 82b93c0d-6cb9-40d9-870f-c1017c63a3a9
+
+dn: uid=ztest,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: ztest@mailinator.com
+sn: Test
+cn: Z Test
+bxHealthUserPatientNumber: 121212
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":18 }, { "name":"Louis", "age":15 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=ztest
+givenName: Z
+mobile: 3036189869
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}/GHmbGCyE5tX+qfeYzbHHmwtx6/1X1tx0KhPcJxQf+L7HwsDUKdF2A==
+bxHealthUserType: Patient
+uid: ztest
+bxHealthUserCaretakerDN: uid=zcare,ou=People,${USER_BASE_DN}
+createTimestamp: 20220705192909.663Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: c207b332-71d8-4e39-a2de-e13ff207e9b9
+pwdChangedTime: 20220705203911.333Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220705203911.334Z
+
+dn: uid=ztest1,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: ztest1@mailinator.com
+sn: One
+cn: Ztest One
+bxHealthUserPatientNumber: 151515
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":9 }, { "name":"Louis", "age":15 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=ztest1
+givenName: Ztest
+mobile: 3036189869
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}HLnjesJ4+JrBBgPCDKhfRTvGvN/yKVK1/bWaWSWl/nb0twI3y1XCng==
+bxHealthUserType: Patient
+uid: ztest1
+createTimestamp: 20220705210355.782Z
+pwdChangedTime: 20220705210355.782Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220705210355.782Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 5435211d-6aff-4ddc-9087-f714461a0011
+
+dn: uid=ztest2,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: ztest2@mailinator.com
+sn: Test
+cn: Z Test
+bxHealthUserPatientNumber: 454545
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":9 }, { "name":"Louis", "age":15 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=ztest2
+givenName: Z
+mobile: 3036189869
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}6aWZKV76PgtzkSmUpYtRlhM6lX+69jhIuM8NVPle0s0L247fr3M5WA==
+bxHealthUserType: Patient
+uid: ztest2
+createTimestamp: 20220705223339.312Z
+pwdChangedTime: 20220705223339.312Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220705223339.312Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 0c2deb25-e077-428a-9832-f74b253ae266
+
+dn: uid=zusercare,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: zusercare@mailinator.com
+sn: Z
+cn: Care Z
+bxHealthUserPatientNumber: 
+bxHealthUserDependents: { "children":[ ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=zusercare
+givenName: Care
+mobile: 3036189869
+bxHealthUserPatientRecordId: 
+userPassword: {SSHA256}0nhvb+4uRXXPnbDg+8+s5PtVIm8VsQpmU2bh/iLfJKK3Q1obYWR2sw==
+bxHealthUserType: Caretaker
+uid: zusercare
+createTimestamp: 20220706162240.964Z
+pwdChangedTime: 20220706162240.964Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220706162240.964Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 1dd569e5-4e76-4ff3-85ee-2b0101d17b5c
+
+dn: uid=zuser,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: zuser@mailinator.com
+sn: User
+cn: Z User
+bxHealthUserPatientNumber: 787878
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":4 }, { "name":"Louis", "age":11 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=zuser
+givenName: Z
+mobile: 3036189869
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}9CDeG8dSofdVpJC5157H4Ty3gTUqAFT9ccngt1x6OphmrjtG0gXuGQ==
+bxHealthUserType: Patient
+uid: zuser
+createTimestamp: 20220706161413.936Z
+pwdChangedTime: 20220706161413.936Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: b76f3a89-a4fd-4052-b6d6-715733af32d7
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220708193643.077Z
+
+dn: uid=zztest,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: zztest@mailinator.com
+sn: Test
+cn: Zhanna Test
+bxHealthUserPatientNumber: 454545
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":9 }, { "name":"Louis", "age":15 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=zztest
+givenName: Zhanna
+mobile: 3036189869
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}ucX3BUMM8dH7n/QpZCYqKJLdXnRsHYsL2YjpfEX9ynm8L3J07VKCZg==
+bxHealthUserType: Patient
+uid: zztest
+createTimestamp: 20220713144542.013Z
+pwdChangedTime: 20220713144542.013Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713144542.013Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 70f17000-a0d2-45b8-991f-cad01ba36fdf
+
+dn: uid=patientz,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: patientz@mailinator.com
+sn: Zhanna
+cn: Patient Zhanna
+bxHealthUserPatientNumber: 121212
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":9 }, { "name":"Louis", "age":15 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=patientz
+givenName: Patient
+mobile: 3036189869
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}Lo52txvh/nrMrNqI67Nd7uNvd51gf4tGdXQzJM5WzfnlOJwjPYhBPg==
+bxHealthUserType: Patient
+uid: patientz
+createTimestamp: 20220713144728.740Z
+pwdChangedTime: 20220713144728.740Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713144728.740Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 77b6f931-07df-4adb-86a0-92336be6d141
+
+dn: uid=zgreen,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: zgreen@mailinator.com
+sn: Green
+cn: Zhanna Green
+bxHealthUserPatientNumber: 121212
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":9 }, { "name":"Louis", "age":15 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=zgreen
+givenName: Zhanna
+mobile: 3036189869
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}Me4k0Mg6dVsCbWtUglTbvRbSLiHggM/nUm7gqZULQw8E46sYVR4Mxw==
+bxHealthUserType: Patient
+uid: zgreen
+createTimestamp: 20220713144912.058Z
+pwdChangedTime: 20220713144912.058Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713144912.058Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 448c6c4f-d814-4880-bd05-d8705cc6f4d6
+
+dn: uid=zgreennewnew,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: zgreennewnew@mailinator.com
+sn: New
+cn: Zgreen New
+bxHealthUserPatientNumber: 151515
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":9 }, { "name":"Louis", "age":15 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=zgreennewnew
+givenName: Zgreen
+mobile: 3036189869
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}MnYcsG/EM/iIC4gOKDgIjW/sSL5xQ9yaLCam1psMRzuzF7xR+7LpIQ==
+bxHealthUserType: Patient
+uid: zgreennewnew
+createTimestamp: 20220713145002.640Z
+pwdChangedTime: 20220713145002.640Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713145002.640Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 15c05f26-65ae-4abc-8563-2917d33c80c5
+
+dn: pf-authn-session-attribute-hash=f0d72a8d458fe435547c311840faa014cc77abb5,pf-authn-session-group-id=84d9HFSA1mSApAtKtswUrANft,ou=sessions,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-authn-sessions
+pf-authn-session-attribute-hash: f0d72a8d458fe435547c311840faa014cc77abb5
+pf-authn-session-data: eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiemlwIjoiREVGIiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMS4xLjAuMTEifQ..eKJcYkj632RVFgWjedxvFw.lpOsJmuhp6xS2qs7WEz3C5cYRm8sh9587mCDhSi1lbFxMUoCailPzzHS6QS1mdloJmjHFeUBau8BsMSSZMegziIdWWCEUn60rEh1TKoEQtkCSjPh1Vng_qosxV9nXUMPHiZeQz52yIjLhJeNEWDpJygXCmHMLP24848zL22vierocxodqla8yCXySK7-nmAbPeR1pEMqZHy0M2IY2bDb5oo91fxBzrU2AmIhTlARX9FeBhei0r2E-28yxeI8wJUz5-znh90eMUNI2y1dNpIAD633WFStCqBBjMR9ewndOpvIceEn6970TMlZNHFvaGbo4Dl-d7ni4wJl2EttuOX_aGKgT5kogbyLQG1WafnVxxtuaMTZWQyw-D3HHIiZSgbD62Pug2PwvcSvuzmQWFwuQ1PfJVv-qGiXsfllr888NR61YMCIqlsWa0EzNnCqMRe7WNyE4dn9ye3B1HicmmQIGX1_cA19K3i36lA6k9vBzIusaDJ7czkl_fm6r8FycYRyzwHXEpU09nUO1pNcIVyH9P1yc0Z3KJHd3gA5CGlGwvU2ifleepz_bg6-57B2RpkoOyWU5keAYPhbKB2D7lUKzyHesEf2Q67QderzSjrcn6j8CJ77xsqcNxfX33o6KHfW55swdUf4DJAiYUO6BKCw97PAdYia3Dyz8vZdQJpPZZfyqWCLFe3njhctyo_Ne0s1QF9EN4HVQoaQqR4aS-goC4arSWzUdkt82UWno2xau-W2aeBkS20ezkUpRsxkRhsLeVGSNmauIY6fOueFO0Eqhu0RaJOi7zDG58iMnStIHgtaVrgBNKwEEoVl0Lms8aOdBcT_z3rf3RmfF9eFr7_aY1D-kIYZDoH0ALN1T_XhW6AzR-hzy6w63sbGX3yjX3kVS_7jRQ3P-p8jpV-3MdGzoSHRN2mQhwhWJR1jGZjrEJL9IzmOlJy2f85CgZPDetm-9DkMLCkB0ac9gwLQ-W3S6oHlUtUE6D7agnk0EmS9-IP_QtU-7N0HbXq9sdJ11o-aErf7goph2Gp4I7yOI8weqzntsfxW-kjsaiQKdzmYaN1HBZqrXXJqdoInaVvRgME8j_TDiZ76yve01Wdb0K0tvTF7FGwPKnPpdztNdTs8gRVFOFSth_Gd4UmGA_UnnX5H86tShxA2V0XMXVANdAb1WCiADZ6QBd8eRs6b5vrYIR8oTqgYoUZ8JcA4yKbJ1f2U5KQIJDvLm0fT_G6WaUzPUkQ6a5cjxf15roVLVdRk4-8i0LRf-z69cLS-TJzzyohQrguRJNjLnLOMjVjgDIFVw8mnws-xim9_cCAmwW4Cp5y_oznmN_unRwOvEwqp1_bC7kGMFOi1VqPBlBjLC5d9BTYmDmJv7gvTRh3gw1XG-g8rKhsPxdS4kNlQtZXHsESuJwhUSDQskJU36zgg2MrLZepmvq0E7gbY-KaUKB0uKucFAF2PwfPCOdZbJZ3h7JzzFQ_50vuGhSBVL4v73pvlEXyn101DqCcAovm1H_5zrHaRWD_ytVTW6PocZieEn703.KME1otOFcCdXUXhOtMoZrg
+createTimestamp: 20220713163311.086Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20220713163311.086Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: b43c78f3-51de-406a-9b1d-5f0dc48cc773
+
+dn: pf-authn-session-attribute-hash=72a6cfa89e603131a717e14fa7a9ea2619459cb5,pf-authn-session-group-id=84d9HFSA1mSApAtKtswUrANft,ou=sessions,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-authn-sessions
+pf-authn-session-attribute-hash: 72a6cfa89e603131a717e14fa7a9ea2619459cb5
+pf-authn-session-data: eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiemlwIjoiREVGIiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMS4xLjAuMTEifQ..Tw1JcLO-0Nl4KrMcBSSEsg.SxIAzR9R6sphR1AaKF2qvklGQ6NRTLsZWyErTsvKjNFBkoT3EJsQAExpLcdNpI_oGORvclR5f3aOrG1zgZF3lTso2oxKzkX0RDdzqwWn8KMQVi_uOGtyYy7ZHsX5zq-bY4SJ7QZAqvubQ8UHqF-5I_PEK0w4U2aZxzoAyynTj-TQXLHfeM9y24cZcDTEWJHVx-AhrTF0-VfsCXDQ5_RDkr7US_qO9xjQrf2R-mbb2WQdAWiVbsxqGoLwlylW5GuR2cbxv_T_ve6k6LDWCoHntOZGAb7EYX3NUpb7YPdKY--bQmA5xCvdbsyKxn3QuXCo8KDccNWQFAFDRTF0TuR3ySOJV6LWPysxAVf3yaATIp1r2DMGdGQmSvQ8JdblV96iDmKPHpiEmXapJ8CVLVPqK6stHXDmCsEzv_Bob3wyw805vI0SwmoZ5kEWnIQh7mvstpYBR89VsG-2nYfNqYBlmfGJe2PI0qpF5D6PuKfO_2XW3lF-6k4k0Ldz2c0n79etb-bcOpraWFso5-Z_nqZN9wso_4bh3lIi96Rp2r_1CDVjv1NemYXHzF_ER6gCsxp7ggsrV326-RlFCBJ_T3w30thAPTSfk39_mcdiWN-4UtzR69cABXXpv0kANHInfunY9BB7slcztGG2uXgdldN865IHmf8buxrUbnLRsAa-Zg4kiv-Kbb6rYIYrGsvirOBMASUifCfIVQ-vhLAeWA8K6tqyTq55vuUNtigCfoJFB4OW-LXDRXAufVWEOLC8GpBWKEX-z8UrdwN3xaF1yYizcCBkKv8RqCCrPDX3MOUjWfWbahY7hANxRDDUIDLbj6LmpuSLeUG_sAnsGYfEuKOEmfU8TJtq1OO3w6YOco_aOnC-2k2NloAZWEtajvPmmfPpkpgdjr0obq1guSfSWmPnWwnlddk_e6NrJiZueUYCtuAS0iG5oklGgJyhPPfLP4LPSyspOy8StfIZEauzygy0UnQeyYHas7N_odV4W6LCZqSI92pfopj3PaSVHF0p5K_VdmYI8m12UD06HLiLUO4AjmphC-_7st0Du-xDW1KxY_2_7ilnaIvzW7CeMXZO8HUknqI3GoKpaA2w4TziGAPH7YPJrQ02rBy7CEc9LAxMCxigjjA4l729KDxg_7fmhOfdwnVn5x0JC5-O7S4Yup1tFZivee-sVZ3CuN0c1c_l0ZFnpHMoXZ2bgAhan6Eu0Xf7uKRWwPNic1h1eyETVkDuVwc3qSIzqA_jBqkCAM-9syn8_S6jfXd5QwlH-xdfsinLsph9hizPUHT20XS9hvCAJOR-dB9h2xV86BXdOpUL1tZy9aflJ0ZrmIJdA_L6UE0Pck3-fzjvrb9vqksHy_fzmk1fgSta3D0n4neaW1GTxWOQ_crUfeeL-hsa1wDZRKByprufUB0K6JFaZCsASBsl5n9SDkMtThEcrODXTitNnE_XcTBC8Ezw3Gvi6SFXjMsBdc9p5j1bweR3T_jcC6WK9xYGPNBMSA_gxxUQg6Kh9oVNwUldG2qAn6rlr3Y0TevigQjJBDAu7Ixemj9PJ9wBFLEXLoC4J-dwE2ZQqCa9rICTkl5B3-_4GeVEWjv3h5gNDjiJ3fHFQTd1cSV5PwdelZgZKu8UaKShTSCs-Gan-KeVWYhu20y9WOXN5qhPrpvVgDRWzOMv9HogA1zUNejWw9v53IalSyAT29nNAAWp636Zu_b8SzhSI8ZVni6NIAq6S2fPRA74rkzQtro-IJ5zG1bKTsCtESy0a7LNopkjImULxrFR0tR0LoEjNzVMFLJOyzdbuZvI0A6Bx-xbKS93bI-fI56WuSEZB90CYKwEYql1e_Hn03HRIfyEvXC0KeQdLh7zxDKAp-A3Uwc1v8ORjHRGwEfQUqMft8e9CxoELcVdZ-26b0Ky5C7dChwY-rpkJn_0QL9S_DWOnXPk4VyyXGJZCj7Tk_SqLs_le2lEpHRABRndNTHlAcJSVss3yqDFf7UUjTkwgkjwvuLTx5eI9LZeVZ1uEjGIGV2kbsGAl5P7qJsqK_lKhkZEBPdL6yyUGmf-cIxKhqF8XTeVsCC31rgTDaZOzQEChUUQ3wSF122Xk2_9sHOdJYuKrCxSVyOo7Mvh9hGmAzeTUd_m-0PrbfNBFUrjS5ElR0r8YvNh7M1PrnGCo6i2UMogH7Ejz9MxqeGpbXc1iWs_eM62Szsy6SLGd2YIa3cUkYAMdrxeowVgRXl391vj13NWVU_N_RzaptDN7VewhYwAFMwLTQrznTTnyM0bUsMtY0Hn5kvs7Zpa9-4pc_HaVdaW5507pfq-CygEf8GAaSXABQpbCv2KwPIaNmAfusaY4BR-u4TJyxIIdbFGjFJ_SaLvb0QE6y1SHW8HCB_72aftdn-Uz0IC_2a3gWzGs0IBznoEHwNHHm2saAKdu6vByrkw-qYcHQHhL94e2C3QwdG7Yx_eMOvC26HYwrjX0uHJZe8ny6tNlbpb1Ozl2PgTINt7zhkA3QEze4dekZqQ3E8m47HK3vNiLj4HdRqWWnaM8xtX-JHpieMnBUE6fhVaQQKkmE5ddnjY7Fi8dmA84F9-iXxfugi0RlK-bd-UWbG5iu5qM6G61v_rFmBM17DSJdXM2VElFWgmMXYO9biNRvw40P6YyYqbphFXJftxFel03bRE3FMsrsQOGYvF1WYHpEbI7AaMaxLfL2y-FX6xV5RMAP-Pgfk2xMxNdegybnmkVWcE8N_8gEaceNoISgE_LufaaXcbtGV6MHPLCYO3NHxve-i9WXCyaxvHwtNCsPQHr9GL4oUwYs5z6EM8gfI3tPeROdCWQqx1NwD3y40ZJ3w-XIY8LDgskwNkTpEvD9jW0whaXBucwPEvpc2Z4pWVPtflwN8uvafbFlnuWMsBiStp0dD6lHxAqdV1DhpJuxqb3cyVxeU6_4iYD_AnVOUl2P70DCqmEh84liwUEegrjWCcBNGW2JUVOw.b8YJmpULY2nTMGBe8xSkSw
+createTimestamp: 20220713163417.640Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20220713163417.640Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: b08293f1-0bf0-4e52-96df-8a769c88bb97
+
+dn: uid=rossgeller,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: rossgeller@mailinator.com
+sn: Geller
+cn: Ross Geller
+bxHealthUserPatientNumber: 
+bxHealthUserDependents: { "children":[ ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=rossgeller
+givenName: Ross
+mobile: 3036189869
+bxHealthUserPatientRecordId: 
+userPassword: {SSHA256}yYUdRltPSa6MlAGuNanjuGAy7KnjvTN79/mZVp5Zdkuu7FIPPIDk/g==
+bxHealthUserType: Caretaker
+uid: rossgeller
+createTimestamp: 20220713163556.022Z
+pwdChangedTime: 20220713163556.022Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713163556.022Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 991a48b1-5472-47dd-b3b7-82cdca4c6e83
+
+dn: uid=rossgeller12,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: rossgeller12@mailinator.com
+sn: Geller
+cn: Ross Geller
+bxHealthUserPatientNumber: 
+bxHealthUserDependents: { "children":[ ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=rossgeller12
+givenName: Ross
+mobile: 3036189869
+bxHealthUserPatientRecordId: 
+userPassword: {SSHA256}NFYutcs6Qva21czXyppDOUSQR0EkArz8mHJtdsm4hhQvbr7WIVG6KA==
+bxHealthUserType: Caretaker
+uid: rossgeller12
+createTimestamp: 20220713${PD_ENGINE_PRIVATE_PORT_LDAPS}45.552Z
+pwdChangedTime: 20220713${PD_ENGINE_PRIVATE_PORT_LDAPS}45.552Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713${PD_ENGINE_PRIVATE_PORT_LDAPS}45.552Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 10752de7-056f-494d-8df9-78dd79f28e72
+
+dn: pf-authn-session-attribute-hash=e3f7a017936619f55e61afd8bbd95563ce03bb10,pf-authn-session-group-id=6HCq9y2LAvunUye0trJ9BXcK7,ou=sessions,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-authn-sessions
+pf-authn-session-attribute-hash: e3f7a017936619f55e61afd8bbd95563ce03bb10
+pf-authn-session-data: eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiemlwIjoiREVGIiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMS4xLjAuMTEifQ..j--N6dMRF4FPiQL6O32OYQ.oNAzXF266pWJ-Ex91v117jtNdcLJKzoVtsyi5_6NfBCWP3A6NKDZM-Sk5mUEgT-_vhVdfdNzPz-M-1WBzVxn1QSBFsZQLyCsmFtdw5W-LUyrAZK0GPYBCcsMUizqnFYQd1VTIG8vqigZ5erLA972cnhqkspWtUFeBJsHpjQCeFIOWEhPBZw_4eBt3DxBQ9N-38B68oVNMJ667Qre9ZlJWA7pmEB1cUdy4urI4yvEsywRqloh-V9Gwc4PzuJOTvJcc5_gUooPv4n6Ijd2EYb7pAaEHhuuHFIgtCEWRWjApZ8DHbPyPSjZjjnDsqcnTPtzIaEC_3K_aPlfzs0L4HrPWoBmlYCw4vzqeQDD9KlpgNUjXkMTUKMsioBJF96Q6RcWo4PG05fd-Aa5TALyPKbM8cMhgZUB9xzHsfmjYk9F0OUXI77EtJwHA_ZCsn2yydrFdhUWdW4y3PRk3AGVvpZD8f5kH9UDfe29W5J4tunh1HTrilztP7qV3Wm_LAPVbPp7ekPq6eBkKfcp7EzYpXF-YsGdrx5czVV0ooUvyJ_d51eurycW-la9VxPz9y0FpusaKR2qUJU79JQTcYLXXG-pAK0qEp_6awIOJVGDF2tdy0vq-XcwxiIyltf8evwk3Ef8Zwg7IRZ0LXy05AXFMJiAzI9edt5K7TS6B03F50wYospwLNJHOtThUqOJ6BVjI55-Js7vVY6J40-_w7lL8yZouDpk-d1B5wPrpbWVrBdpLsSB7cOcQ4eK9Jos7KBrMHDolIT9UaJQjgnL8_mHMWDors46y54PI1O1QEEM2yZF0eJbVmSjvV-1QrJ7Nc9rg0A6HivQhHnV2ZeePAuHPJWzYWvoAS4yo_vqyMDH1X4j_inVgWp2fO7n__N0ffN3Tiam2kEldv_Je3jymiEAQeCPXyUSp-9UvNvrS39ZnljqqKKhF4QbrzvGMWmNVffpqsZuailWY-wWNCYiertOY4qhE8-636BLtGkx0q8f33zXFa_UmC6mwx4vmojefDl52Q3V4wOB77N2NIZr2QLLUhVTFwkp-bLgbzXN2J0RGxDXcVVzlt9qCcPBl3KDDk1cR_Xd8TqNNct44rz2wxDW-8dTWgBWFtxqlfpYK0tzqZdOcpz6ncgxkCwMLM2ok7EKheUBKsJomGGOJTvIMZn13nlEr5BbQ-SqgabKxWRPBPdN4qWlmIR-tYUfGvcTurJ-stj0ITJUW_Ln7MIqt66tjQPnLmWQR0FUs0lcwxAEZOXlQ492yLV2619H978FX887TiuWFttwJT2-kU-omXGvD9w8P_fwzKbJGeLpxn7peG6rbPw2aWezF2zycEPrGpFPXUvxTPIToBd8Ed0u8XlJj8V2X5uN9VGNf_uiz1GNlg7I7oE1yTRGlV8D-V-O4TOhm8uFYLXiyfRvYdPOGQuQ-JTYWNqsRpFoKr7eP8n4l6eC2SkKYZZ6ezX7-9v98L_GpMKJ9vGrSD6-aBGEYzQgrX8jeEyVl3Ur53rksmf7SOvYarS9jcvA2NTkpI32Fo5o6g9W.9uICtmoPxSCRJbjL9nHoJA
+createTimestamp: 20220713163718.647Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20220713163718.647Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: deb8eef7-0650-4aff-ad26-733d7175ca95
+
+dn: pf-authn-session-attribute-hash=f6e08e6496b9dbad50cfd4062dd04f411a10fbea,pf-authn-session-group-id=6HCq9y2LAvunUye0trJ9BXcK7,ou=sessions,${USER_BASE_DN}
+objectClass: top
+objectClass: pf-authn-sessions
+pf-authn-session-attribute-hash: f6e08e6496b9dbad50cfd4062dd04f411a10fbea
+pf-authn-session-data: eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiemlwIjoiREVGIiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMS4xLjAuMTEifQ..5bGrce93QF63hFYWyvvq_A.vd-_prqGvl9Qs7uHKr7xlD_YCGe8iAzMGELW7ie-M8dkEEp2Wyk1cq7RlcF56nUljrYRH23Pc2mVe0VYW2TUdPnuDk6NvaEXGkqNgKU61RmgIKuU1G400G3JFDoL2e58Kcp28kWV107j5KnRAblnV5XTRVRCZ_21MoV7HxF_L7NS8e5Ddh-WfHX4Wda9VZg7fyPgGzhZTCbE8Gv4JWJwFtvc5dufJKLsjpC4SU8JUEQ_PYV2TQ_Wf08yKcz3wvUo9Bxh3gMW_xoF8bIFqK7JrzoykBzJYvGubh4H4nHi4jMlOLQyvcq4gy7MI5JPDKG27KTlE23966Fd7Z5zBV50LYLptuqCGQNEQye-xhzsncdhAUfBhV_Dqjwy-T6PCIF1hPVTmlFf0LHAL0uEUHzhzn7icuvrU5x6T5NM6ADddlPpe_CSYUhmRvKRUAip1G31BhK9WZ4mieqv8cEbSOdRGWr5cPpsuPotb3jMlawjodmVIDr72OzSdkRXCQ4pl5iBuMIqMl3BdSyN2fvDMRAUDKzmob5X11ED0og6oGNdI03KlFAqNtYfSWp9JvMofQFXqotLpUHfH6ilW70CRVeB1C1c1be48xWdGgQ_8clk8bVApJG4Of11tHpBAbMEmH-oB8_APapO1mvXO9eVNeQD0vn7F1ajy5X2jYTPFcU3hcSn5ig8WL-OXtv0uZpryhgxsoUpctWRKleFfaIqEty4PgG-d3kn6ZFWHLKffSUUdzX9ELBbO-U9X3Srf4KPr2b5sldxUSjPudvFNrqNdJwPmq7sgOl1FKO4LqjyDp4cxTX5gbG_HKfDX5jbeFEtMxKkkO29xlWNO8dnLFyH1DIfb8Zh0ykgNvYT2GGsqlz2h1EmclkSqMI1uXWHVc8SwR9epHCdyql8IhOt0hDr_6ccJ3qfAv9MXplLSZSKKn9RI4zz255ntbTGR31tf9h3L546znno6AwPKMyV2rjzjcXjKdX2HEXzkVohTRb0ho5sGnW2oNEY3ZuTwMzoipfQBy0vnapbcwg7ETgG3Q0wTvF9ojt74fEHzSvfGNOArbj74obmdfN4yjLkFP3rDL5MK8yKxVYuwCZ5tBbOl7NyLPNIt_zGMl5lYz4KjcQNcHQKyBdarhx_A8Ms8iPnyyqVt5J4n_4ZMoFUW9X655dteLkFHKBoH8uVlqhKtKPyWb-ZMf5RhnxQjRJJPpK1G3TY8Bf2zf-tznHoiSD4TDQVyG1dEiedYwigYKxZVGVOKVXbvofIAYMPvFh4K_QuxL4tOydEEBCHnIO2iwhl9ik8DtMpX5JkI_WhPl57oXYeAW0yJThpnjxJXCXlKwKXvsw4BE8g1P55rg51VVr7KSaGUKJdw8cKSk3_VGALuyLo5g4zlPZUXm1DcdxS-1mUxyFwCNp4F2pqf-626wjGqjsiWcblUi0YvAdTCSy0ofehU2bD5xN3EHC5Gsg23eLvLX4ToyqXFYurz8ci998yvP3LwPOsZzzz0pdAafB5qR4AMyDSDIeqdRm15PJ3pKJ2W7D-GR4r5YaPc_pMXhWezIkN0u2trFqFuYw9Cq_-DhLTxYQeN4AAl03DoBpQZNyw9uExb3_624Or1kdcNmtKHkP39eK-zK_P93GNL8IAquDTigqcqX81xEj8_74FBddI9i9f2Mz1ggdZ4h6pHd6oEqldV_M50JM0R3XaRGjYOBI8fTPE0zHdoIe6R8HcbnDfI9ptma1lHHBXi6DJ19ygMlFYS7LeD3etljjq-7zQztsHHTNdvFct0dFXO9KeiBegA1_e7EmeUBdAxAqZp4YIFi989o_wx01rVbGscT-ORzTbHlxVXFE7MyER1Pkzd8BKsDAh3njnxs3oK2LmrM81S81J2VnIqb1rMCA72qTXXwjdbejizb96Rn0gTmoTwUVlwKGtTg5jcHs-MM4YjizJgbHblfecd-HwHBvK46gNVYYrbPYHwJnUiqHUJNwEiuk3EfgRa1aQ98zkOsR7RG7qEzlDaYVGDcyachdDYh0KSVwYo62PfT-rQUXA8B7J9XdUALfN9XTw6Mj5jaXC9cVeSMEip-Km4ml2O1lWSOukK2p3IcQHKTDQvwQ1V5CU9jtNCNZXktDl6yOoYsH-qF_JYdZakc0vQyj7V656j60eSadQqZCwebrBlDrYzLoS_bdBKqxkhzMOaixX2EuYHXqOlWRUZXZKs7yStcFMt5MvDJceaDs1qtFl3Zd_09CX_O-ySakS6wZhujvSrnZLJBlmUO3iQ0hFs6sdMXsnramqD1c9SYGguAvJTpupkRUtC8EA9AZ53GULtBX-HpsoGxHmLW2_txcKJqSNgYq-svwklra-KoGMpt9pSuvEn5o8qFk-87rs-N99C3qnh5d_YlPL1cxud1145zeKHyv5Q0fwDB0nOnH4jmLoW62XxBx6lImA4w0ukqISOOr9QHVReL_umNmiM0dPmyDWoGqXcOZD_Kq6ESltIWkIUPkk35qDWEFGrTGJ8bty3zT3qdZ3uyWi948CX4VjXxc8TkqCaqj9g96cykjKP4304_qV0dIXXa32ni5dOGBWO-Ulpo_68FBFYUSgPBrFxoKD8URQMdNufJN5xfeBwY4o6MIdwW3UQli28p7on20HhZW7VlubI-dKQVbxDOfnaRNYbp6BDfU8PS7uJVmFEAMG-ENKMCpJunijJL1_rdgGy5Sd0TT39M3M0JPwWh7ioDf6ZZ7QyyZU8wZnWlWVOzeQW7UG4uvSC_vdV_59xRGGkQRSwIMmixnf-o1gzMoDoLiTCvE5UWkZCvYJxtaROBkwaxwlvS8iII1VJ3rWrBSIAtwvEVQWpxt0l0Xr70cYXRcHrHWUV_8e5PsSKTvsi1WcKLemnOE2WTydDNSLwbOV3pDhHybFbYAv0CSpFWoeNvxN0EwKMhLunQ0BjPNAYmiqSiVxPT5CnjUc6P8Rf36DAZOTEjyGNXH3-3RKv8EHXQ.n0PouO9Nkdy-FNsqSchTgw
+createTimestamp: 20220713163731.720Z
+creatorsName: cn=pingfederate,cn=Root DNs,cn=config
+modifyTimestamp: 20220713163731.720Z
+modifiersName: cn=pingfederate,cn=Root DNs,cn=config
+entryUUID: 3761d3f2-66bf-4480-aa44-0e197519e5b1
+
+dn: entryUUID=44bc9e7c-d5f8-4a1c-bc2f-3edb689da35e,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: rossgeller
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: monicageller
+ping-consent-subject: monicageller
+ping-consent-actor-dn: uid=monicageller,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=monicageller,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"false", "message-doctor":"true", "manage-appointments":"true" }
+ping-consent-state: revoked
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20220713164915.394Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 44bc9e7c-d5f8-4a1c-bc2f-3edb689da35e
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713165015.874Z
+
+dn: entryUUID=5d7ee0b7-eff7-4b33-9b26-9d9f018e3661,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: rossgeller12
+ping-consent-definition: { "id":"allowed-caretaker-actions", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: monicageller
+ping-consent-subject: monicageller
+ping-consent-actor-dn: uid=monicageller,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=monicageller,ou=people,${USER_BASE_DN}
+ping-consent-data: { "view-test-result":"true", "message-doctor":"true", "manage-appointments":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Caretaker Actions
+ping-consent-data-text: Allowed Caretaker Actions
+ping-consent-purpose-text: My Caretaker
+createTimestamp: 20220713164539.515Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 5d7ee0b7-eff7-4b33-9b26-9d9f018e3661
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713165015.963Z
+
+dn: entryUUID=fec81abc-b376-430b-a34a-dc7e5c766588,ou=consents,${USER_BASE_DN}
+objectClass: top
+objectClass: ping-consent-record
+ping-consent-audience: rossgeller12
+ping-consent-definition: { "id":"caretaker-allowed-portions-record", "version":"0.1", "locale":"en-US" }
+ping-consent-actor: monicageller
+ping-consent-subject: monicageller
+ping-consent-actor-dn: uid=monicageller,ou=people,${USER_BASE_DN}
+ping-consent-subject-dn: uid=monicageller,ou=people,${USER_BASE_DN}
+ping-consent-data: { "careplan":"true", "diagnosticreport":"false", "immunization":"false", "medicationrequest":"false", "observation":"true", "practitioner":"true", "procedure":"true" }
+ping-consent-state: accepted
+ping-consent-title-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-data-text: Allowed Portions of Patient Record for Caretaker
+ping-consent-purpose-text: Allowed Portions of Patient Record for Caretaker
+createTimestamp: 20220713164539.522Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: fec81abc-b376-430b-a34a-dc7e5c766588
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713165015.968Z
+
+dn: uid=monicageller,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ${GIT_PATH}User
+objectClass: pf-connected-identities
+mail: monicageller@mailinator.com
+sn: Geller
+cn: Monica Geller
+bxHealthUserPatientNumber: 454545
+bxHealthUserDependents: { "children":[ { "name":"Lisa", "age":5 }, { "name":"Louis", "age":14 }, { "name":"Lacey", "age":18 } ] }
+pf-connected-identity: auth-source=pf-local-identity:user-id=monicageller
+givenName: Monica
+mobile: 3036189870
+bxHealthUserPatientRecordId: 662606957
+userPassword: {SSHA256}wGt1/gFdA3sgm68r55ZBU8y5Bvg+4HWgVRe2iSY4g5MjiCs8wR9JBA==
+bxHealthUserType: Patient
+uid: monicageller
+bxHealthUserCaretakerDN: uid=rossgeller12,ou=People,${USER_BASE_DN}
+createTimestamp: 20220713163213.418Z
+pwdChangedTime: 20220713163213.418Z
+creatorsName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 56a380e3-a2f2-405b-8f6b-1cef04e3dd58
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+modifyTimestamp: 20220713165016.787Z
+

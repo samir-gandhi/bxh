@@ -1,0 +1,17 @@
+dn: cn=schema
+objectClass: top
+objectClass: ldapSubentry
+objectClass: subschema
+cn: schema
+attributeTypes: ( bxHealthUserDependents-OID NAME 'bxHealthUserDependents' DESC 'JSON attribute to store dependents and ages of a given patient.' SYNTAX 1.3.6.1.4.1.30221.2.3.4 USAGE userApplications )
+attributeTypes: ( bxHealthUserMemberNumber-OID NAME 'bxHealthUserMemberNumber' DESC 'bxHealthUserMemberNumber' SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( bxHealthUserCaretakerId-OID NAME 'bxHealthUserCaretakerDN' DESC 'bxHealthUserCaretakerDN' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( bxHealthUserPatientRecordId-OID NAME 'bxHealthUserPatientRecordId' DESC 'bxHealthUserPatientRecordId' SINGLE-VALUE USAGE userApplications X-MIN-VALUE-LENGTH '0' X-MAX-VALUE-LENGTH '40' )
+attributeTypes: ( bxHealthDateofBirth-OID NAME 'bxHealthDateofBirth' DESC 'bxHealthDateofBirth' SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( bxHealthUserPlanType-OID NAME 'bxHealthUserPlanType' DESC 'bxHealthUserPlanType' SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( bxHealthUserType-OID NAME 'bxHealthUserType' DESC 'bxHealthUserType' SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( bxHealthUserAuthnPreferences-OID NAME 'bxHealthUserAuthnPreferences' DESC 'bxHealthUserAuthnPreferences' USAGE userApplications )
+attributeTypes: ( bxHealthUserMyPatientsDN-OID NAME 'bxHealthUserMyPatientsDN' DESC 'bxHealthUserMyPatientsDN' SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 USAGE userApplications )
+attributeTypes: ( bxHealthuserPatientNumber-OID NAME 'bxHealthUserPatientNumber' DESC 'Patient number input during registration for demos.' SINGLE-VALUE USAGE userApplications X-MIN-VALUE-LENGTH '0' X-MAX-VALUE-LENGTH '20' )
+objectClasses: ( ${GIT_PATH}User-OID NAME '${GIT_PATH}User' SUP inetOrgPerson STRUCTURAL MAY ( bxHealthDateofBirth $ bxHealthUserAuthnPreferences $ bxHealthUserCaretakerDN $ bxHealthUserDependents $ bxHealthUserMemberNumber $ bxHealthUserMyPatientsDN $ bxHealthUserPatientNumber $ bxHealthUserPatientRecordId $ bxHealthUserPlanType $ bxHealthUserType ) )
+

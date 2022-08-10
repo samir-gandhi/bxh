@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pingOneConnectionsConfig>
+    <connections>
+        <active>true</active>
+        <creationDate>2021-10-21T17:38:07.005Z</creationDate>
+        <credentialId>2e0fb4ee-f66c-4ec4-8d76-65f03ea354ec</credentialId>
+        <encryptedCredential>eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiU2x4Sjhrc2xGRyIsInZlcnNpb24iOiIxMC4zLjIuMCJ9..eKsFhVewPRbCZL9hrFKRdA.RXGWND49AmK3A5YB-XqXWvd0e8tcgJm2ojpM1BetOvG_GxzG4UUFbJ--qVBFQwjNRAzonI-W46o56H8UO0Y2jpvc8trFtTW1z1jz5jtMTazm1YAiYGPra9VjKcl10IGRDg1TS4mb5U7l9tPr3eZIHOPiAsGR0hJewtqBAiunMM8YRJYZjjZXg67LU2f1_q2hfV1mGRpkua-NyJSWq8wklWVAuaQ9rZv5rqDBJUeTdpvIDxOf5T2jpUtxuWIz5pBgfF54bEWcVotwASGLnqGBwBlEy8mxoCJHcjktRSZczov0m0SZV002R3GndVaLDzGZnW-S89PLB5dOd9LaMh1f1MBMfSEqqyXQ2_-IXn92EdU7KJoqR9c4URDy35KbwKc1fUBF3LsRF30fDbxQLcbptGojsjPBmHZeQX0B-pJ7D8A7X5TZSDFX86OZCYiurGbkSp0RhiWTBBDoJbB9fWhX8lyBnjbDmQQtJH2NoeBHXlBIkvJCrVueUC8Qan7GjkFyTiiCQMaMMDQlKlYK4vkXaOM3yRogE1YU2m7tE-XOV3COdn5l-e3PIYoZRC3e_QLEXraz6TuMXowijSbeeQ_8x18NYsll7fCkwCoqo9tyXLEXfXlsL2rNDr6n678EFuykDRzKDkOR_CWnS5NSJJiQM6ktpk6ZVOpmFKRimyP2y2Aq4re0CbV8ElY0UEV01vt6EodEQy3I79tRia7c8fq6ofzFEjZ-315qYT6PaAavkl3o3CRFoeqzCkWMjjQT8IX4z3_fpnBiwTGtZQ7c-n2EbLY5sVLvuB5ZAbkTy530qKDUsrSwKaH4Xr9Z4ysdK4lmenl-rdJfr5FgoolsI8vEuOKuKLTQxKP_EJRPu5aKghSnXE3LUhOcww13IrMnP8qmcKPbq0SFTQoGZxAWIWJfe2aPNzcvCnfYpE7y_q7pehdJB0HLUp5j-1ZBO7S5Ybj0mQHbmW3BrYdvnYSfPm7fmhr_N4490fthr-c2Ha5quzM39hLr6uTMGK6r-KG4KXAjRHZ_1yyoHzXKHyM3fl6Vzs9kXmekPpbyrjI10O95M_InTSDvra1yMFgBLhUXe3PYcwqU8zm3kW5prGye81Z3lSOQ__SlDuniqMiufE2nANCnyCPTLbehWBeRd7rLqYzwQRe83NFuf6D6WecK-9vCF3hV6y-Ic1G-j_TDwCyfWrwjiV6hRvmVQnXbliS-Ep4QN1g27Z_2aLa2LuwKQQ31hfPQHp5VxHU8raw6IaOy59-6LcBS2heTuCI0fsy08HvABy_ItyPpFExngeGzbmPVAylrnEa96JqOx1FcQ_dinQy2y1ruVXcKO-8WqYtwo0MFfj6jc3evoX6zt2J4Q9lUlhO8iTFqpLSWMShzoWZu92q3qJjF4-HmDRouROtHW3hfHwc212SSo_x0FaAJEEol397Cy6fRSmpv7S1LMRGjw_drlciPDE7Kyvq9ozsj5S5yAr-ZS1jUiPNkfOilnM2EjBFdDtm70XBMhbGxLZ8zzyhyg0u0fsqu44L1BTXXmbyd6O6oD834dfGTNHTIWHqvfEILs5DT33hRhaSZ1Jih17qp8QT8ZHyXlqWfnPJRI2zqUT3n9whvTr1CFWipuoL8rutnHHyXy1V5JY1BM8zSRRwZxJ99_Gs8LacAr3FJUJ9_lrXj-LU87Ua2Y0E-yrmu9g.srI5gVt0ymqsqpkPE0QR3g</encryptedCredential>
+        <environmentId>6a96ada1-d5a2-40db-945d-9398dc873a84</environmentId>
+        <id>vtUE59alwz3CncWxTplkvI</id>
+        <name>internal_remylyle_1537046497</name>
+        <organizationName>internal_remylyle_1537046497</organizationName>
+        <pingOneAuthenticationApiEndpoint>https://auth.pingone.com</pingOneAuthenticationApiEndpoint>
+        <pingOneConnectionId>2ce6c0cb-1167-4f1e-b2e2-0c1c2db33c73</pingOneConnectionId>
+        <pingOneManagementApiEndpoint>https://api.pingone.com</pingOneManagementApiEndpoint>
+        <region>North America</region>
+    </connections>
+</pingOneConnectionsConfig>

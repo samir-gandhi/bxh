@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:AuthnSelectionConfig lastModifiedMillis="1657740337119" enableAuthnSelection="true" enableSpAuthnSelection="false" failIfNoSelection="false" xmlns:urn="urn:pingidentity.com:pf:authn-selection">
+    <urn:AuthnSelectionTrees>
+        <urn:AuthnSelectionTree treeId="qx6SZ4tkr6hgIw9GkhG7QgGUV" treeName="SingularKey AuthN Policy" disabled="false" authnApiApp="DefaultAuthNAPIApp" handleFailuresLocally="false">
+            <urn:AstRoot context="">
+                <urn:AstAction authnSelectorId="singularKeySelector" xsi:type="urn:AuthnSelectorActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                <urn:AstChild context="No">
+                    <urn:AstAction noOpType="CONTINUE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </urn:AstChild>
+                <urn:AstChild context="Yes">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">HTMLFormWithLIP</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Success">
+                        <urn:AstAction apcId="defaultPolicyContract" xsi:type="urn:ApcMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:AttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>entryUUID</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>mail</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>uid</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:AttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                </urn:AstChild>
+            </urn:AstRoot>
+            <urn:treeDescription>Validates user credentials via SingularKey PingFederate connector.</urn:treeDescription>
+        </urn:AuthnSelectionTree>
+        <urn:AuthnSelectionTree treeId="t5tEv2d2HHM6Jwo2Qiov2CDqA" treeName="AuthN Experience Policy" disabled="false" authnApiApp="iXRvLzb3ourpHvHxfmE9ihX39" handleFailuresLocally="false">
+            <urn:AstRoot context="">
+                <urn:AstAction authnSelectorId="authnExp" xsi:type="urn:AuthnSelectorActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                <urn:AstChild context="Basic">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">HTMLFormWithLIP</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                        <urn:attributeRule>
+                            <urn:IncomingAttr>policy.action</urn:IncomingAttr>
+                            <urn:Operand>EQUALS</urn:Operand>
+                            <urn:ExpectedValue>identity.registration</urn:ExpectedValue>
+                            <urn:Result>Registration</urn:Result>
+                        </urn:attributeRule>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Registration">
+                        <urn:AstAction lipId="defaultIdentityProfile" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:InboundAttributeMapping>
+                                <urn1:AttributeMap Name="UserType" Type="Text" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>Patient</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:InboundAttributeMapping>
+                            <urn:OutboundAttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Local Account" AttributeSourceId="defaultIdentityProfile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Local Account" AttributeSourceId="defaultIdentityProfile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Local Account" AttributeSourceId="defaultIdentityProfile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>username</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:OutboundAttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                    <urn:AstChild context="Success">
+                        <urn:AstAction lipId="defaultIdentityProfile" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:InboundAttributeMapping>
+                                <urn1:AttributeMap Name="pf.local.identity.unique.id" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>uid</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="UserType" Type="Text" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>Patient</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:InboundAttributeMapping>
+                            <urn:OutboundAttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>entryUUID</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>mail</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>uid</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:OutboundAttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                </urn:AstChild>
+                <urn:AstChild context="Caregiver">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">HTMLFormLIPCaretaker</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                        <urn:attributeRule>
+                            <urn:IncomingAttr>policy.action</urn:IncomingAttr>
+                            <urn:Operand>EQUALS</urn:Operand>
+                            <urn:ExpectedValue>identity.registration</urn:ExpectedValue>
+                            <urn:Result>Registration</urn:Result>
+                        </urn:attributeRule>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Registration">
+                        <urn:AstAction lipId="jNIrvIjNxGt6U2ct" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:InboundAttributeMapping>
+                                <urn1:AttributeMap Name="UserType" Type="Text" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>PatientProxy</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:InboundAttributeMapping>
+                            <urn:OutboundAttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Local Account" AttributeSourceId="jNIrvIjNxGt6U2ct" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Local Account" AttributeSourceId="jNIrvIjNxGt6U2ct" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Local Account" AttributeSourceId="jNIrvIjNxGt6U2ct" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>username</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:OutboundAttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                    <urn:AstChild context="Success">
+                        <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:AuthnSourceKey type="ADAPTER">PingOneMFA</urn:AuthnSourceKey>
+                            <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                            <urn:InputIdMapping Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker">
+                                <urn1:ValueText xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">username</urn1:ValueText>
+                            </urn:InputIdMapping>
+                            <urn:userIdAuthenticated>true</urn:userIdAuthenticated>
+                        </urn:AstAction>
+                        <urn:AstChild context="Fail">
+                            <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </urn:AstChild>
+                        <urn:AstChild context="Success">
+                            <urn:AstAction lipId="jNIrvIjNxGt6U2ct" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <urn:InboundAttributeMapping>
+                                    <urn1:AttributeMap Name="mobile" Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>mobile</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:AttributeMap Name="pf.local.identity.unique.id" Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>uid</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                                </urn:InboundAttributeMapping>
+                                <urn:OutboundAttributeMapping>
+                                    <urn1:AttributeMap Name="ImmutableID" Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>entryUUID</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:AttributeMap Name="mail" Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>mail</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>uid</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                                </urn:OutboundAttributeMapping>
+                            </urn:AstAction>
+                        </urn:AstChild>
+                    </urn:AstChild>
+                </urn:AstChild>
+                <urn:AstChild context="Internal">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">HTMLForm</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Success">
+                        <urn:AstAction apcId="defaultPolicyContract" xsi:type="urn:ApcMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:AttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Adapter" AttributeSourceId="HTMLForm" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>entryUUID</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Adapter" AttributeSourceId="HTMLForm" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>mail</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="HTMLForm" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>username</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:AttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                </urn:AstChild>
+                <urn:AstChild context="Passwordless">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">IDFirst</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Success">
+                        <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:AuthnSourceKey type="ADAPTER">PingOneMFA</urn:AuthnSourceKey>
+                            <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                            <urn:InputIdMapping Type="Adapter" AttributeSourceId="IDFirst">
+                                <urn1:ValueText xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">subject</urn1:ValueText>
+                            </urn:InputIdMapping>
+                            <urn:userIdAuthenticated>true</urn:userIdAuthenticated>
+                        </urn:AstAction>
+                        <urn:AstChild context="Fail">
+                            <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </urn:AstChild>
+                        <urn:AstChild context="Success">
+                            <urn:AstAction lipId="defaultIdentityProfile" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <urn:InboundAttributeMapping>
+                                    <urn1:AttributeMap Name="pf.local.identity.unique.id" Type="Adapter" AttributeSourceId="IDFirst" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>uid</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                                </urn:InboundAttributeMapping>
+                                <urn:OutboundAttributeMapping>
+                                    <urn1:AttributeMap Name="ImmutableID" Type="Adapter" AttributeSourceId="IDFirst" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>entryUUID</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:AttributeMap Name="mail" Type="Adapter" AttributeSourceId="IDFirst" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>mail</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="IDFirst" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>uid</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                                </urn:OutboundAttributeMapping>
+                            </urn:AstAction>
+                        </urn:AstChild>
+                    </urn:AstChild>
+                </urn:AstChild>
+                <urn:AstChild context="Patient">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">HTMLFormWithLIP</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                        <urn:attributeRule>
+                            <urn:IncomingAttr>policy.action</urn:IncomingAttr>
+                            <urn:Operand>EQUALS</urn:Operand>
+                            <urn:ExpectedValue>identity.registration</urn:ExpectedValue>
+                            <urn:Result>Registration</urn:Result>
+                        </urn:attributeRule>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Registration">
+                        <urn:AstAction lipId="defaultIdentityProfile" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:InboundAttributeMapping>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:InboundAttributeMapping>
+                            <urn:OutboundAttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Local Account" AttributeSourceId="defaultIdentityProfile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Local Account" AttributeSourceId="defaultIdentityProfile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Local Account" AttributeSourceId="defaultIdentityProfile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>username</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:OutboundAttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                    <urn:AstChild context="Success">
+                        <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:AuthnSourceKey type="ADAPTER">PingOneMFA</urn:AuthnSourceKey>
+                            <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                            <urn:InputIdMapping Type="Adapter" AttributeSourceId="HTMLFormWithLIP">
+                                <urn1:ValueText xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">uid</urn1:ValueText>
+                            </urn:InputIdMapping>
+                            <urn:userIdAuthenticated>true</urn:userIdAuthenticated>
+                        </urn:AstAction>
+                        <urn:AstChild context="Fail">
+                            <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        </urn:AstChild>
+                        <urn:AstChild context="Success">
+                            <urn:AstAction lipId="defaultIdentityProfile" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                <urn:InboundAttributeMapping>
+                                    <urn1:AttributeMap Name="mobile" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>mobile</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:AttributeMap Name="pf.local.identity.unique.id" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>uid</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                                </urn:InboundAttributeMapping>
+                                <urn:OutboundAttributeMapping>
+                                    <urn1:AttributeMap Name="ImmutableID" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>entryUUID</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:AttributeMap Name="mail" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>mail</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                        <urn1:ValueText>uid</urn1:ValueText>
+                                    </urn1:AttributeMap>
+                                    <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                                </urn:OutboundAttributeMapping>
+                            </urn:AstAction>
+                        </urn:AstChild>
+                    </urn:AstChild>
+                </urn:AstChild>
+            </urn:AstRoot>
+            <urn:treeDescription>This Policy uses the Extended Properties Selector to allow easy switching between:
+* Basic (HTML Form with LIP) for Postman testing
+* Patient (HTML Form with LIP --> PingOne MFA)
+* Caregiver (HTML Form with LIP --> PingOne MFA)
+* (n/a) Passwordless (ID-First + PingOne MFA)
+* (n/a) Internal (HTML Form)</urn:treeDescription>
+        </urn:AuthnSelectionTree>
+        <urn:AuthnSelectionTree treeId="P4ecDsjImlLSRMuCLxDSuRwoj" treeName="Existing Session Policy for OAuth" disabled="false" authnApiApp="" handleFailuresLocally="false">
+            <urn:AstRoot context="">
+                <urn:AstAction authnSelectorId="SessionAuthNSelector" xsi:type="urn:AuthnSelectorActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                <urn:AstChild context="Patient">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">HTMLFormWithLIP</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Success">
+                        <urn:AstAction lipId="defaultIdentityProfile" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:InboundAttributeMapping>
+                                <urn1:AttributeMap Name="pf.local.identity.unique.id" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>uid</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:InboundAttributeMapping>
+                            <urn:OutboundAttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>entryUUID</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>mail</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>uid</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:OutboundAttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                </urn:AstChild>
+                <urn:AstChild context="Proxy">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">HTMLFormLIPCaretaker</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Success">
+                        <urn:AstAction lipId="jNIrvIjNxGt6U2ct" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:InboundAttributeMapping>
+                                <urn1:AttributeMap Name="pf.local.identity.unique.id" Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>uid</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:InboundAttributeMapping>
+                            <urn:OutboundAttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>entryUUID</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>mail</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="HTMLFormLIPCaretaker" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>uid</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:OutboundAttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                </urn:AstChild>
+                <urn:AstChild context="No Session">
+                    <urn:AstAction noOpType="CONTINUE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </urn:AstChild>
+            </urn:AstRoot>
+            <urn:treeDescription>PingToken client using Ext Props of "Basic" had no way to know which LIP had the session, so getting a token for a proxy was returning to BXH for creds. See AuthN Experience Policy.</urn:treeDescription>
+        </urn:AuthnSelectionTree>
+        <urn:AuthnSelectionTree treeId="gucbJFZZzhcu2DcndYFDYJikJ" treeName="Patient and Proxy Registrations" disabled="false" authnApiApp="iXRvLzb3ourpHvHxfmE9ihX39" handleFailuresLocally="false">
+            <urn:AstRoot context="">
+                <urn:AstAction authnSelectorId="UserTypeParamSelector" xsi:type="urn:AuthnSelectorActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                <urn:AstChild context="patient">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">HTMLFormWithLIP</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>false</urn:fallbackToSuccess>
+                        <urn:attributeRule>
+                            <urn:IncomingAttr>policy.action</urn:IncomingAttr>
+                            <urn:Operand>EQUALS</urn:Operand>
+                            <urn:ExpectedValue>identity.registration</urn:ExpectedValue>
+                            <urn:Result>Registration</urn:Result>
+                        </urn:attributeRule>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Registration">
+                        <urn:AstAction lipId="defaultIdentityProfile" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:InboundAttributeMapping>
+                                <urn1:AttributeMap Name="UserType" Type="Text" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>Patient</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:InboundAttributeMapping>
+                            <urn:OutboundAttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Local Account" AttributeSourceId="defaultIdentityProfile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Local Account" AttributeSourceId="defaultIdentityProfile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Local Account" AttributeSourceId="defaultIdentityProfile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>username</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:OutboundAttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                </urn:AstChild>
+                <urn:AstChild context="proxy">
+                    <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AuthnSourceKey type="ADAPTER">HTMLFormLIPCaretaker</urn:AuthnSourceKey>
+                        <urn:fallbackToSuccess>false</urn:fallbackToSuccess>
+                        <urn:attributeRule>
+                            <urn:IncomingAttr>policy.action</urn:IncomingAttr>
+                            <urn:Operand>EQUALS</urn:Operand>
+                            <urn:ExpectedValue>identity.registration</urn:ExpectedValue>
+                            <urn:Result>Registration</urn:Result>
+                        </urn:attributeRule>
+                        <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                    </urn:AstAction>
+                    <urn:AstChild context="Fail">
+                        <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    </urn:AstChild>
+                    <urn:AstChild context="Registration">
+                        <urn:AstAction lipId="jNIrvIjNxGt6U2ct" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <urn:InboundAttributeMapping>
+                                <urn1:AttributeMap Name="UserType" Type="Text" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>PatientProxy</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:InboundAttributeMapping>
+                            <urn:OutboundAttributeMapping>
+                                <urn1:AttributeMap Name="ImmutableID" Type="Local Account" AttributeSourceId="jNIrvIjNxGt6U2ct" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="mail" Type="Local Account" AttributeSourceId="jNIrvIjNxGt6U2ct" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>email</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:AttributeMap Name="subject" Type="Local Account" AttributeSourceId="jNIrvIjNxGt6U2ct" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                    <urn1:ValueText>username</urn1:ValueText>
+                                </urn1:AttributeMap>
+                                <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            </urn:OutboundAttributeMapping>
+                        </urn:AstAction>
+                    </urn:AstChild>
+                </urn:AstChild>
+            </urn:AstRoot>
+            <urn:treeDescription>Uses an HTTP query param to dictate which LIP to use for registration; patient vs. patient proxy.</urn:treeDescription>
+        </urn:AuthnSelectionTree>
+        <urn:AuthnSelectionTree treeId="CdbI01NoRCJTVS9w8CPJszuum" treeName="Fallback Policy" disabled="false" authnApiApp="" handleFailuresLocally="false">
+            <urn:AstRoot context="">
+                <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <urn:AuthnSourceKey type="ADAPTER">HTMLFormWithLIP</urn:AuthnSourceKey>
+                    <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                    <urn:userIdAuthenticated>false</urn:userIdAuthenticated>
+                </urn:AstAction>
+                <urn:AstChild context="Fail">
+                    <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </urn:AstChild>
+                <urn:AstChild context="Success">
+                    <urn:AstAction lipId="defaultIdentityProfile" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:InboundAttributeMapping>
+                            <urn1:AttributeMap Name="pf.local.identity.unique.id" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                <urn1:ValueText>uid</urn1:ValueText>
+                            </urn1:AttributeMap>
+                            <urn1:AttributeMap Name="UserType" Type="Text" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                <urn1:ValueText>Patient</urn1:ValueText>
+                            </urn1:AttributeMap>
+                            <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                        </urn:InboundAttributeMapping>
+                        <urn:OutboundAttributeMapping>
+                            <urn1:AttributeMap Name="ImmutableID" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                <urn1:ValueText>entryUUID</urn1:ValueText>
+                            </urn1:AttributeMap>
+                            <urn1:AttributeMap Name="mail" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                <urn1:ValueText>mail</urn1:ValueText>
+                            </urn1:AttributeMap>
+                            <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="HTMLFormWithLIP" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                <urn1:ValueText>uid</urn1:ValueText>
+                            </urn1:AttributeMap>
+                            <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                        </urn:OutboundAttributeMapping>
+                    </urn:AstAction>
+                </urn:AstChild>
+            </urn:AstRoot>
+            <urn:treeDescription>Policy that is invoked by events that do not use the Extended Properties (e.g. Profile Management)</urn:treeDescription>
+        </urn:AuthnSelectionTree>
+        <urn:AuthnSelectionTree treeId="1hokrytHSlRbwZ0K1uAsgzrBE" treeName="ChangePassword" disabled="true" authnApiApp="DefaultAuthNAPIApp" handleFailuresLocally="false">
+            <urn:AstRoot context="">
+                <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <urn:AuthnSourceKey type="ADAPTER">PingOneMFA</urn:AuthnSourceKey>
+                    <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                    <urn:InputIdMapping Type="Context">
+                        <urn1:ValueText xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">context.RequestedUser</urn1:ValueText>
+                    </urn:InputIdMapping>
+                    <urn:userIdAuthenticated>true</urn:userIdAuthenticated>
+                </urn:AstAction>
+                <urn:AstChild context="Fail">
+                    <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </urn:AstChild>
+                <urn:AstChild context="Success">
+                    <urn:AstAction apcId="forgotPassword" xsi:type="urn:ApcMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AttributeMapping>
+                            <urn1:AttributeMap Name="entryUUID" Type="No Mapping" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                <urn1:ValueText>NO_MAPPING</urn1:ValueText>
+                            </urn1:AttributeMap>
+                            <urn1:AttributeMap Name="mail" Type="No Mapping" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                <urn1:ValueText>NO_MAPPING</urn1:ValueText>
+                            </urn1:AttributeMap>
+                            <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="PingOneMFA" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                                <urn1:ValueText>username</urn1:ValueText>
+                            </urn1:AttributeMap>
+                            <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                        </urn:AttributeMapping>
+                    </urn:AstAction>
+                </urn:AstChild>
+            </urn:AstRoot>
+        </urn:AuthnSelectionTree>
+    </urn:AuthnSelectionTrees>
+    <urn:DefaultAuthnSources/>
+</urn:AuthnSelectionConfig>

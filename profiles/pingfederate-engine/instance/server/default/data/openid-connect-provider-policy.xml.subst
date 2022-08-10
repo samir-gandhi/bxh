@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:OpenIdConnectProviderPolicy enabled="true" defaultPolicyGroupId="OIDCPolicyDefault" trackUserSessionsForLogout="false" xmlns:urn="urn:pingidentity.com:pf:openid:connect:idp:policy">
+    <urn:ProviderPolicyGroup policyId="OIDCPolicyDefault" idTokenLife="5" includeSriInIdToken="true" includeUserInfoInIdToken="true" includeSHashInIdToken="false" returnIdTokenOnRefreshGrant="true" policyName="Default OIDC Policy" accessTokenManagerId="jwtDefault">
+        <urn:UserInfoMapping>
+            <urn1:AttributeMap Name="sub" Type="Token" Value="sub" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="user_type" Type="LDAP" AttributeSourceId="PD" Value="bxHealthUserType" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="myDN" Type="LDAP" AttributeSourceId="PD" Value="Subject DN" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="myPatientsDN" Type="LDAP" AttributeSourceId="PD" Value="bxHealthUserMyPatientsDN" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="myCaregiversDN" Type="LDAP" AttributeSourceId="PD" Value="bxHealthUserCaretakerDN" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="patientNumber" Type="LDAP" AttributeSourceId="PD" Value="bxHealthUserPatientNumber" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="phone_number" Type="LDAP" AttributeSourceId="PD" Value="mobile" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="given_name" Type="LDAP" AttributeSourceId="PD" Value="givenName" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="family_name" Type="LDAP" AttributeSourceId="PD" Value="sn" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="email" Type="LDAP" AttributeSourceId="PD" Value="mail" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeSource Id="PD" Description="PD" Type="LDAP" DataSourceId="LDAP-PingDirectory" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                <urn1:Parameter Name="filter" Value="uid=${sub}"/>
+                <urn1:Parameter Name="search_base" Value="${USER_BASE_DN}"/>
+                <urn1:Parameter Name="search_scope" Value="SUBTREE_SCOPE"/>
+                <urn1:Parameter Name="memberof_nested_group" Value="false"/>
+            </urn1:AttributeSource>
+            <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        </urn:UserInfoMapping>
+        <urn:scopeAttributesMap>
+            <urn:item>
+                <urn:key>phone</urn:key>
+                <urn:value>phone_number</urn:value>
+            </urn:item>
+            <urn:item>
+                <urn:key>profile</urn:key>
+                <urn:value>email family_name given_name myCaregiversDN myDN myPatientsDN patientNumber phone_number user_type</urn:value>
+            </urn:item>
+            <urn:item>
+                <urn:key>email</urn:key>
+                <urn:value>email</urn:value>
+            </urn:item>
+        </urn:scopeAttributesMap>
+        <urn:attributeContractInclusionMap/>
+    </urn:ProviderPolicyGroup>
+    <urn:ProviderPolicyGroup policyId="PingCentralPolicyDefault" idTokenLife="5" includeSriInIdToken="false" includeUserInfoInIdToken="false" includeSHashInIdToken="false" returnIdTokenOnRefreshGrant="false" policyName="PingCentral OIDC Policy" accessTokenManagerId="jwtDefault">
+        <urn:UserInfoMapping>
+            <urn1:AttributeMap Name="PingCentral-Role" Type="LDAP" AttributeSourceId="PD" Value="employeeType" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="sub" Type="Token" Value="sub" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="given_name" Type="LDAP" AttributeSourceId="PD" Value="givenName" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="family_name" Type="LDAP" AttributeSourceId="PD" Value="sn" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeMap Name="email" Type="LDAP" AttributeSourceId="PD" Value="mail" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn1:AttributeSource Id="PD" Description="PD" Type="LDAP" DataSourceId="LDAP-PingDirectory" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
+                <urn1:Parameter Name="filter" Value="uid=${sub}"/>
+                <urn1:Parameter Name="search_base" Value="${USER_BASE_DN}"/>
+                <urn1:Parameter Name="search_scope" Value="SUBTREE_SCOPE"/>
+                <urn1:Parameter Name="memberof_nested_group" Value="false"/>
+            </urn1:AttributeSource>
+            <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        </urn:UserInfoMapping>
+        <urn:scopeAttributesMap/>
+        <urn:attributeContractInclusionMap/>
+    </urn:ProviderPolicyGroup>
+</urn:OpenIdConnectProviderPolicy>
