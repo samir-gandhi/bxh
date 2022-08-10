@@ -23,3 +23,5 @@ export CHART_VERSION="0.9.0"
 ##  Prefixes ENV variable. ENV variable is used for helm release name.
 ##  If used, include trailing slash. (e.g. ENV_PREFIX="myenv-")
 export ENV_PREFIX=""
+
+export NS_PER_ENV="true"
