@@ -16,9 +16,9 @@
 
 ## Default branch of repo
 export DEFAULT_BRANCH=prod
-export HELM_CHART_NAME="/Users/samirgandhi/projects/BXHelm/charts/ping-bx"
+export HELM_CHART_NAME="ping-bx/ping-bx"
 export HELM_CHART_URL="https://samir-gandhi.github.io/BXHelm/"
-# export CHART_VERSION="0.1.2"
+export CHART_VERSION="0.1.2"
 ## Useful for multiple pipelines in same clusters
 ##  Prefixes ENV variable. ENV variable is used for helm release name.
 ##  If used, include trailing slash. (e.g. ENV_PREFIX="myenv-")
