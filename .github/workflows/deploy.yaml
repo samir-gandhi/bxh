@@ -44,6 +44,7 @@ jobs:
         env:
           PING_IDENTITY_DEVOPS_USER_BASE64: ${{ secrets.PING_IDENTITY_DEVOPS_USER_BASE64 }}
           PING_IDENTITY_DEVOPS_KEY_BASE64: ${{ secrets.PING_IDENTITY_DEVOPS_KEY_BASE64 }}
+          GCR_CONFIG_JSON_BASE64: ${{ secrets.GCR_CONFIG_JSON_BASE64 }}
       - name: Report Success
         env:
           SLACK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
