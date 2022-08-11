@@ -22,9 +22,10 @@ export CHART_VERSION="0.1.3"
 ## Useful for multiple pipelines in same clusters
 ##  Prefixes ENV variable. ENV variable is used for helm release name.
 ##  If used, include trailing slash. (e.g. ENV_PREFIX="myenv-")
-export ENV_PREFIX="bxhealth-"
+export ENV_PREFIX=""
 
 export NS_PER_ENV="true"
+export NS_PREFIX="bxhealth-"
 
 ## custom added for bxh
 test -z "${REF}" && REF=$(git rev-parse --abbrev-ref HEAD)
