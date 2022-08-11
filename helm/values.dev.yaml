@@ -51,3 +51,10 @@ ping-devops:
     enabled: true
     envs:
       SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
+
+  pingauthorizepap:
+    ingress:
+      enabled: true
+    enabled: true
+    envs:
+      SERVER_PROFILE_BRANCH: "${SERVER_PROFILE_BRANCH}"
