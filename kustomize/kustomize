@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+. scripts/vars.sh
+
+cat <&0 > "${KUSTOMIZE_DIR}/all.yaml"
+
+
+kustomize build "${KUSTOMIZE_DIR}" && rm "${KUSTOMIZE_DIR}/all.yaml"

@@ -7,6 +7,7 @@ bxhealthapp:
   enabled: true
   image:
     name: "bxhealthapp${REACT_IMAGE_SUFFIX}"
+    pullSecret: gcr-pull-secret
   ingress:
     host: "${FQDN}"
     tlsSecret: bxhealth-tls
@@ -46,7 +47,7 @@ ping-devops:
 # Settings to be applied to every product are defined under global
   pingaccess-admin:
     image:
-      tag: 2201-7.0.3
+      tag: 2206-7.1.0
     workload:
       type: Deployment
       deployment:
@@ -71,7 +72,7 @@ ping-devops:
   pingaccess-engine:
     enabled: true
     image:
-      tag: 2201-7.0.3
+      tag: 2206-7.1.0
     workload:
       type: Deployment
       deployment:
@@ -85,7 +86,7 @@ ping-devops:
   pingfederate-admin:
     enabled: true
     image:
-      tag: 2201-11.0.1
+      tag: 2206-11.1.0
     envs:
       SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
       SERVER_PROFILE_ADMIN_URL: "https://github.com/${GITHUB_REPOSITORY}"
@@ -99,7 +100,7 @@ ping-devops:
   pingfederate-engine:
     enabled: true
     image:
-      tag: 2201-11.0.1
+      tag: 2206-11.1.0
     workload:
       type: Deployment
       deployment:
@@ -120,6 +121,8 @@ ping-devops:
 
   pingdirectory:
     enabled: true
+    image:
+      tag: 2206-9.1.0.0
     envs:
       MAX_HEAP_SIZE: 2458m
       ROOT_USER_PASSWORD_FILE: /opt/staging/pwd
@@ -177,7 +180,7 @@ ping-devops:
           service: ldaps
           timeoutSeconds: 600
     image:
-      tag: 2201-9.0.0.0
+      tag: 2206-9.1.0.0
     workload:
       type: Deployment
       deployment:
@@ -198,7 +201,7 @@ ping-devops:
   pingauthorizepap:
     enabled: true
     image:
-      tag: 2201-9.0.0.0
+      tag: 2206-9.1.0.0
     envs:
       SERVER_PROFILE_URL: "https://github.com/${GITHUB_REPOSITORY}"
       SERVER_PROFILE_PATH: profiles/pingauthorizepap
