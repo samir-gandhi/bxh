@@ -6,14 +6,6 @@ patches:
     kind: Deployment
     labelSelector: "app.kubernetes.io/name=bxhealthapp"
   patch: |-
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: deploy
-    spec:
-      template:
-        spec:
-          securityContext:
-            fsGroup: 0
-            runAsUser: 0
-            runAsGroup: 0
+    - op: replace
+      path: /spec/template/spec/securityContext
+      value: {"fsGroup":0,"runAsUser":0,"runAsGroup":0}
