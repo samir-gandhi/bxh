@@ -40,7 +40,9 @@ setNamespace() {
   # Set namespace based on NS_PER_ENV
   kubectl get ns "${K8S_NAMESPACE}" >/dev/null 2>&1
   test $? -ne 0 && kubectl create ns "${K8S_NAMESPACE}"
-  kubectl config set-context --current --namespace="${K8S_NAMESPACE}"
+  kubectl config set-context --current --namespace="${K8S_NAMESPACE}" > /dev/null
+  echo "${YELLOW}INFO: Using K8s context:${NC}"
+  echo "    $(kubectl config view --minify -o jsonpath='{..context}')"
 }
 
 # End: Set all Global script variables
