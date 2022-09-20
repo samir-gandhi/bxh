@@ -53,7 +53,20 @@ select ns in $K8S_NAMESPACE "quit"; do
     esac
 done
 
-options=($(ls profiles))
+# Create an array of all profile directories, exlcude any engine directories
+options=($(ls -d profiles/*/ | grep -v engine))
+# Parse out directory name from path
+# i.e. profiles/pingfederate/ => pingfederate
+counter=0
+for i in "${options[@]}"; do
+  # remove prefix
+  _thisDirName=${i##profiles/}
+  #remove trailing slash
+  options[$counter]=${_thisDirName%/}
+  ((counter++))
+done
+# Allow user to select "all" products
+options[$counter]="all"
 
 # Server profile options
 # if [ "$project" = "bxhealth"  ] || [ "$project" = "bxfinance"  ]
@@ -154,15 +167,8 @@ ping_directory() {
 
 ping_authorize() {
   printf "\n\033[0;32mStarting PingAuthorize Profile Update\033[0m\n"
-
-  if [ "$project" = "bxhealth"  ]
-  then
-    paz_pod=$(kubectl get pods --selector app.kubernetes.io/name=pingauthorize | awk '/ping/ && $1 {print $1}')
-    ping_dir="pingauthorize"
-  else
-    paz_pod=$(kubectl get pods --selector role=pingdatagovernance | awk '/ping/ && $1 {print $1}')
-    ping_dir="pingdatagovernance"
-  fi
+  paz_pod=$(kubectl get pods --selector app.kubernetes.io/name=pingauthorize | awk '/ping/ && $1 {print $1}')
+  ping_dir="pingauthorize"
 
   printf "\n\033[0;32mRemove any previous files or folders\033[0m\n"
   rm -rf /tmp/${project}-paz-profile
@@ -197,30 +203,19 @@ ping_authorize() {
 
 pap() {
   printf "\n\033[0;32mStarting PAP Profile Update\033[0m\n"
+  paz_snapshot="defaultPolicies.SNAPSHOT"
+  paz_dir="pingauthorizepap"
 
-  if [ "$project" = "bxhealth"  ]
-  then
-    paz_snapshot="defaultPolicies.SNAPSHOT"
-    paz_dir="pingauthorizepap"
-    paz_subdomain="pingauthorizepap-${repo}"
-  else
-    paz_snapshot="defaultPolicies.snapshot"
-    paz_dir="pingdatagovernancepap"
-    paz_subdomain="pingdatagovernancepap-${K8S_NAMESPACE}"
-  fi
-
-  # BXRetail snapshot is different than BXFinance
-  if [ "$project" = "bxretail"  ]
-  then
-    paz_snapshot="defaultPolicies.SNAPSHOT"
-  fi
+  kubectl port-forward "service/${ENV}-pingauthorizepap" 8443:8443 2>&1 >/dev/null &
+  # wait for port forward
+  sleep 5
 
   # Get PAP branch names/id
-  json=$(curl -k https://${paz_subdomain}.ping-devops.com/api/version-control/branches  -H 'accept: application/json' -H 'x-user-id: admin' | jq -r '.data')
+  json=$(curl -k https://localhost:8443/api/version-control/branches  -H 'accept: application/json' -H 'x-user-id: admin' | jq -r '.data')
   # Get id for the defaultPolicies.snapshot branch
   branch=$( echo "$json" | jq -r --arg paz_snapshot "$paz_snapshot" '.[] | select(.name | contains($paz_snapshot)) | .id')
   # Get list of all commits. Idealy only 1 new commit.  Filter out uncommitted changes and the SYSTEM SNAPSHOT
-  snapshots=$(curl -k https://${paz_subdomain}.ping-devops.com/api/version-control/branches/${branch}/snapshots -H 'accept: application/json' -H 'x-user-id: admin' | jq -c '[ .data[] | select( .commitDetails.message != null ) | select( .commitDetails.message != "SYSTEM BOOTSTRAP" ) | {id: .id, name: .commitDetails.message}]')
+  snapshots=$(curl -k https://localhost:8443/api/version-control/branches/${branch}/snapshots -H 'accept: application/json' -H 'x-user-id: admin' | jq -c '[ .data[] | select( .commitDetails.message != null ) | select( .commitDetails.message != "SYSTEM BOOTSTRAP" ) | {id: .id, name: .commitDetails.message}]')
 
   # Loop over all the snapshots and add ids to the id array and names to name array.
   for i in "$(jq -r '.[]' <<< "$snapshots")"; do
@@ -244,64 +239,37 @@ pap() {
       break;
     done
     # Download the snapshot into the policies directory
-    curl -X POST -ko ./profiles/${paz_dir}/policies/${paz_snapshot} "https://${paz_subdomain}.ping-devops.com/api/snapshot/${snapshotid}/export" -H 'accept: application/json' -H 'x-user-id: admin'
+    curl -X POST -ko ./profiles/${paz_dir}/policies/${paz_snapshot} "https://localhost:8443/api/snapshot/${snapshotid}/export" -H 'accept: application/json' -H 'x-user-id: admin'
   fi
 
   printf "\n\033[0;32mPAP complete!\033[0m\n"
+    # kill port-forwarding process
+  pgrep kubectl | xargs kill -9
 }
 
 ping_access() {
   printf "\n\033[0;32mStarting PingAccess Profile Update\033[0m\n"
-
-  if [ "$project" = "bxhealth"  ]
-  then
-    pa_subdomain="pingaccess-admin-${repo}"
-    pa_pwd="YWRtaW5pc3RyYXRvcjoyRmVkZXJhdGVNMHJlIQ=="
-  else
-    pa_subdomain="pingaccess-${K8S_NAMESPACE}"
-    pa_pwd="YWRtaW5pc3RyYXRvcjoyRmVkZXJhdGVNMHJlIQ=="
-  fi
-
+  kubectl port-forward "service/${ENV}-pingaccess-admin" 9000:9000 2>&1 >/dev/null &
+  # wait for port forward
+  sleep 5
   # Call PA admin api to export config data.json 
-  curl -ko ./profiles/pingaccess/instance/data/start-up-deployer/data.json "https://${pa_subdomain}.ping-devops.com/pa-admin-api/v3/config/export" -H 'accept: application/json' -H 'X-XSRF-Header: PingAccess' -H "Authorization: Basic ${pa_pwd}"
-
-  # Remove data.json.subst
-  rm -fv ./profiles/pingaccess/instance/data/start-up-deployer/data.json.subst
-
+  curl -ko ./profiles/pingaccess-admin/instance/data/data.json "https://localhost:9000/pa-admin-api/v3/config/export" -H 'accept: application/json' -H 'X-XSRF-Header: PingAccess' --user "administrator:2FederateM0re!"
   printf "\n\033[0;32mPingAccess complete!\033[0m\n"
+  # kill port-forwarding process
+  pgrep kubectl | xargs kill -9
 }
 
 ping_federate() {
   printf "\n\033[0;32mStarting PingFederate Profile Update\033[0m\n"
-
-  printf "\n\033[0;32mRemove any previous files or folders\033[0m\n"
-  rm -rf /tmp/${project}-pf-profile
-  rm -f /tmp/${project}-pf-archive.zip
-
-  printf "\n\033[0;32mCreate local folders\033[0m\n"
-  mkdir /tmp/${project}-pf-profile
-
-  if [ "$project" = "bxhealth"  ]
-  then
-    pd_subdomain="pingfederate-admin-${repo}"
-  else
-    pd_subdomain="pingfederate-${K8S_NAMESPACE}"
-  fi
-
+  kubectl port-forward "service/${ENV}-pingfederate-admin" 9999:9999 2>&1 >/dev/null & #can we assume pingfederate-admin suffix here?
+  # wait for port forward
+  sleep 5
   # Call PF admin-api to export configuration archive
-  curl -ko /tmp/${project}-pf-archive.zip "https://${pd_subdomain}.ping-devops.com/pf-admin-api/v1/configArchive/export" -H 'accept: application/json' -H 'X-XSRF-Header: PingFederate' -H 'Authorization: Basic YXBpLWFkbWluOjJGZWRlcmF0ZU0wcmU='
-
-  printf "\n\033[0;32mExtract files\033[0m\n"
-  unzip -d /tmp/${project}-pf-profile /tmp/${project}-pf-archive.zip
-
-  # Remove existing profile files from target.
-  printf "\n\033[0;32mRemove existing profile files from target.\033[0m\n"
-  rm -fr ./profiles/pingfederate/instance/server/default/data/
-
-  printf "\n\033[0;32mCopy updated profile to local repository\033[0m\n"
-  cp -Rf /tmp/${project}-pf-profile/. ./profiles/pingfederate/instance/server/default/data/
-
+  curl -ko ./profiles/pingfederate-admin/instance/bulk-config/data.json "https://localhost:9999/pf-admin-api/v1/bulk/export" \
+    -H 'accept: application/json' -H 'X-XSRF-Header: PingFederate' --user "administrator:2FederateM0re!"
   printf "\n\033[0;32mPingFederate complete!\033[0m\n"
+  # kill port-forwarding process
+  pgrep kubectl | xargs kill -9
 }
 
 # if [ "${choices[0]}" ]
@@ -325,10 +293,10 @@ ping_federate() {
 # fi
 
 for i in ${!options[@]}; do 
-  echo "i is: $i"
-  echo "options[i] is: ${options[i]}"
-  if test ${choices[i]} = "+"; then
-    echo "choices[i] is: ${choices[i]}"
+  #echo "i is: $i"
+  #echo "options[i] is: ${options[i]}"
+  if test "${choices[i]}" = "+"; then
+    #echo "choices[i] is: ${choices[i]}"
     case ${options[i]} in
       pingaccess-admin)
         ping_access ;;
