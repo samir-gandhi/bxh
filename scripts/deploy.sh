@@ -83,7 +83,6 @@ echo "${GREEN}INFO: Running Helm upgrade${NC}"
 
 _deployUTC=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-set -x
 helm upgrade --install \
   "${ENV}" "${HELM_CHART_NAME}" \
   -f "${VALUES_FILE}" ${_valuesDevFile}  \

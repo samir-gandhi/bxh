@@ -291,6 +291,9 @@ ping_federate() {
 # if [ "${choices[4]}" ]
 #   then ping_federate
 # fi
+getGlobalVars | awk '{ print length($0) " " $0; }' | sort -r -n | cut -d ' ' -f 2- > tmpHosts
+sed -i.bak '/REACT_APP_ENV/d' tmpHosts
+rm tmpHosts.bak
 
 for i in ${!options[@]}; do 
   #echo "i is: $i"
@@ -299,22 +302,30 @@ for i in ${!options[@]}; do
     #echo "choices[i] is: ${choices[i]}"
     case ${options[i]} in
       pingaccess-admin)
-        ping_access ;;
+        ping_access
+        printf "\n\033[0;32mStarting variablize-profile %s\033[0m\n" ${options[i]}
+        ./scripts/variablize.sh -p profiles/pingaccess-admin -e tmpHosts "${1}" ;;
       pingfederate-admin)
-        ping_federate ;;
+        ping_federate
+        printf "\n\033[0;32mStarting variablize-profile %s\033[0m\n" ${options[i]}
+        ./scripts/variablize.sh -p profiles/pingfederate-admin -e tmpHosts "${1}" ;;
       pingdirectory)
-        ping_directory ;;
+        ping_directory
+        printf "\n\033[0;32mStarting variablize-profile %s\033[0m\n" ${options[i]}
+        ./scripts/variablize.sh -p profiles/pingdirectory -e tmpHosts "${1}" ;;
       pingauthorize)
-        ping_authorize ;;
+        ping_authorize
+        printf "\n\033[0;32mStarting variablize-profile %s\033[0m\n" ${options[i]}
+        ./scripts/variablize.sh -p profiles/pingauthorize.sh -e tmpHosts "${1}" ;;
       pingauthorizepap)
-        pap ;;
+        pap
+        printf "\n\033[0;32mStarting variablize-profile %s\033[0m\n" ${options[i]}
+        ./scripts/variablize.sh -p profiles/pingauthorizepap.sh -e tmpHosts "${1}" ;;
     esac
   fi
 done
 
-# Variablize it
-printf "\n\033[0;32mStarting variablize-profiles\033[0m\n"
-. ./ci_tools/variablize-profiles.sh
+rm tmpHosts
 
 printf "\n\n\033[0;32mAll done!\033[0m\n"
 
